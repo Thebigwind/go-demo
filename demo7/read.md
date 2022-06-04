@@ -32,6 +32,8 @@
 
 
 gitHub: https://github.com/asaskevich/EventBus
+文档
+https://pkg.go.dev/github.com/asaskevich/eventbus#NewServer
 
 
 `
