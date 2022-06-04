@@ -1,0 +1,4 @@
+主goroutine 起多个goroutine 并发的去做一些事情（如并发的寻找slice中是否包含某元素），
+当其中一个完成了目前后，其它的goroutine都应该退出掉，
+或者所有的goroutine已经遍历完，都没找到指定元素，也应该退出掉；
+或者所有的goroutine还没有遍历完，但是达到了㊗主goroutine超时时间，子goroutine也应该退出掉；
