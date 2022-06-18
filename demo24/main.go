@@ -6,6 +6,10 @@ import (
 	"fmt"
 )
 
+/*
+系统自身的error处理一般是 errors.New()或fmt.Errorf()等，对一些需要复杂显示的，不太友好，我们可以扩展下error。
+error在标准库中被定义为一个接口类型，该接口只有一个Error()方法
+*/
 //type error interface {
 //	Error() string
 //}
