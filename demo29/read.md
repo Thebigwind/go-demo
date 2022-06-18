@@ -32,3 +32,27 @@ gin框架中集成pprof
         app.Run(":3000")
     }
 
+
+分析性能
+https://blog.csdn.net/u012189747/article/details/122704004
+
+获取.pb.gz文件
+go tool pprof http://localhost:6060/debug/pprof/profile
+
+浏览器上查看图片化信息
+注意：.pb.gz文件路径可根据上个命令得到。
+
+输入命令：
+go tool pprof -http=:8080 /Users/zhuyun/pprof/pprof.samples.cpu.001.pb.gz
+
+自动打开浏览器，可看到图片化信息，
+
+
+
+
+https://www.jianshu.com/p/4e4ff6be6af9
+
+https://studygolang.com/articles/20529
+
+https://www.bbsmax.com/A/6pdDqWByzw/
+
