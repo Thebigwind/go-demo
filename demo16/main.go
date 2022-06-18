@@ -1,5 +1,6 @@
 package common
 
+/*
 import (
 	"context"
 	"encoding/json"
@@ -133,3 +134,4 @@ func GetkafkaJsonConfig() (error, []string, string) {
 
 	return err, strings.Split(servers, ","), types
 }
+*/
