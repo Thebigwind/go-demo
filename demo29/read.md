@@ -56,3 +56,7 @@ https://studygolang.com/articles/20529
 
 https://www.bbsmax.com/A/6pdDqWByzw/
 
+https://eddycjy.gitbook.io/golang/di-9-ke-gong-ju/go-tool-pprof
+
+
+
