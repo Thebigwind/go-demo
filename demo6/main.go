@@ -1,54 +1,115 @@
-//启动 2个groutine 2秒后取消， 第一个协程1秒执行完，第二个协程3秒执行完
-// 思路：采用ctx, _ := context.WithTimeout(context.Background(), time.Second*2)实现2s取消。协程执行完后通过channel通知，是否超时。
-
 package main
 
 import (
 	"context"
 	"fmt"
+	"sync"
 	"time"
 )
 
-//1秒执行完，参数为一个channel
-func f1(in chan struct{}) {
-
-	time.Sleep(1 * time.Second)
-	in <- struct{}{}
-
+func main() {
+	DoIndex()
 }
 
-//2秒执行完，参数为一个channel
-func f2(in chan struct{}) {
-	time.Sleep(3 * time.Second)
-	in <- struct{}{}
-}
+func DoIndex() {
 
-func test() {
-	ch1 := make(chan struct{})
-	ch2 := make(chan struct{})
-	//定义context的超时时间
-	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
+	var a int
+	var b int
+	var c int
+	var err error
+
+	var wg = sync.WaitGroup{}
+	wg.Add(3)
 
 	go func() {
-		go f1(ch1)
-		select {
-		case <-ctx.Done():
-			fmt.Println("f1 timeout")
-			break
-		case <-ch1:
-			fmt.Println("f1 done")
+		ctx, _ := context.WithTimeout(context.Background(), time.Second*3)
+		defer wg.Done()
+		a, err = A(ctx)
+		if err != nil {
+			fmt.Printf("err B")
+		}
+	}()
+	go func() {
+		ctx, _ := context.WithTimeout(context.Background(), time.Second*3)
+		defer wg.Done()
+		b, err = B(ctx)
+		if err != nil {
+			fmt.Printf("err B")
 		}
 	}()
 
 	go func() {
-		go f2(ch2)
-		select {
-		case <-ctx.Done():
-			fmt.Println("f2 timeout")
-			break
-		case <-ch2:
-			fmt.Println("f2 done")
+		defer wg.Done()
+		ctx, _ := context.WithTimeout(context.Background(), time.Second*3)
+		c, err = C(ctx)
+		if err != nil {
+			fmt.Printf("err B")
 		}
 	}()
-	time.Sleep(time.Second * 5)
+
+	wg.Wait()
+
+	fmt.Printf("A:%v,B:%v,C:%v\n", a, b, c)
+}
+
+func A(ctx context.Context) (int, error) {
+
+	sigChan := make(chan int, 1)
+	go func() {
+		time.Sleep(time.Second * 4)
+		//call url
+		result := 1
+		sigChan <- result
+	}()
+
+	select {
+	case <-ctx.Done():
+		fmt.Println("A timeout")
+		break
+	case result := <-sigChan:
+		fmt.Println("A done")
+		return result, nil
+
+	}
+	return 0, nil
+}
+
+func B(ctx context.Context) (int, error) {
+	sigChan := make(chan int, 1)
+	go func() {
+		//call url
+		result := 2
+		sigChan <- result
+	}()
+
+	select {
+	case <-ctx.Done():
+		fmt.Println("B timeout")
+		break
+	case result := <-sigChan:
+		fmt.Println("B done")
+		return result, nil
+
+	}
+	return 0, nil
+}
+
+func C(ctx context.Context) (int, error) {
+	sigChan := make(chan int, 1)
+	go func() {
+		//call url
+		result := 3
+		sigChan <- result
+	}()
+
+	select {
+	case <-ctx.Done():
+		fmt.Println("C timeout")
+		break
+	case result := <-sigChan:
+		fmt.Println("C done")
+		return result, nil
+
+	}
+	return 0, nil
 }
