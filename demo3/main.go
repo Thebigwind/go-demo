@@ -29,7 +29,7 @@ func Do() {
 	var wg = sync.WaitGroup{}
 	wg.Add(ComsumerNum)
 	for i := 0; i < ComsumerNum; i++ {
-		go Comsumer(DataChan, &wg, i)
+		go Consumer(DataChan, &wg, i)
 	}
 	wg.Wait()
 	fmt.Println("finish...")
@@ -41,7 +41,7 @@ func Producer(DataChan chan Data) {
 	//从数据库查询数据
 	queryData := make([]Data, 0)
 	//手动构建了1条
-	queryData = append(queryData, Data{12, "aa", "2324", 1})
+	queryData = append(queryData, Data{12, "linklist", "2324", 1})
 
 	for {
 		//此处将查询数据写入 queryData。
@@ -62,7 +62,7 @@ func Producer(DataChan chan Data) {
 	fmt.Println("producer finish...")
 }
 
-func Comsumer(DataChan chan Data, wg *sync.WaitGroup, index int) {
+func Consumer(DataChan chan Data, wg *sync.WaitGroup, index int) {
 	defer wg.Done()
 	defer func() {
 		if e := recover(); e != nil {
