@@ -12,8 +12,8 @@ type AesEncrypt struct {
 }
 
 const (
-	METAVIEW_API_KEY_SEED      = "B10f10wApiKeySeed"
-	METAVIEW_SECURITY_KEY_SEED = "B10f10wSecretKeySeed"
+	METAVIEW_API_KEY_SEED      = "abcd"
+	METAVIEW_SECURITY_KEY_SEED = "abcdef"
 )
 
 func NewAesEncrypt(key string) *AesEncrypt {
