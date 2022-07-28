@@ -43,22 +43,22 @@ openssl 1.1.1+ 版本增加了对SM2 的支持，所以我们就能直接使用�
 
 安装完成后，使用下列命令查看该版本的openssl 是否支持SM2参数：
 
-openssl ecparam -list_curves | grep SM2
+# openssl ecparam -list_curves | grep SM2
 
 如果查询结果有内容，则说明该版本支持SM2参数，也就可以生成SM2的公私钥对。
 
 在安装了正确版本的openssl之后，下面就是利用openssl自带的命令生成SM2公私钥对了：
 
-1.创建EC参数和原始私钥文件：
+## 1.创建EC参数和原始私钥文件：
 openssl ecparam -out ec_param.pem -name SM2 -param_enc explicit -genkey
 注：生成完成后可以查看一下EC私钥信息:
 openssl ecparam -in ec_param.pem -text
 然后验证一下参数：
 openssl ecparam -in ec_param.pem -check
 
-2.将原始的私钥文件，转换为pkcs8格式：
+## 2.将原始的私钥文件，转换为pkcs8格式：
 openssl pkcs8 -topk8 -inform PEM -in ec_param.pem -outform pem -nocrypt -out pri_key_pkcs8.pem
 
-3.利用原始的私钥，生成对应的公钥：
+## 3.利用原始的私钥，生成对应的公钥：
 openssl ec -in ec_param.pem -pubout -out pub_key.pem
 至此SM2的秘钥对已经生成结束，pri_key_pkcs8.pem是SM2私钥，而pub_key.pem是公钥。

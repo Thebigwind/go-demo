@@ -1,0 +1,1 @@
+# openssl x509 -in caSM2.crt -noout -text
