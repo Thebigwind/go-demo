@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	GerenateSM2Key()
+	GenerateSM2Key()
 	src := []byte("这是使用SM2椭圆曲线算法进行数据加解密测试")
 	cipherText := EncryptSM2(src, "sm2Public.pem")
 	plainText := DecryptSM2(cipherText, "sm2Private.pem")

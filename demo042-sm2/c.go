@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func GerenateSM2Key2() {
+func GenerateSM2Key2() {
 	//1.生成sm2密钥对
 	privateKey, err := sm2.GenerateKey(rand.Reader)
 	if err != nil {

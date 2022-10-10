@@ -7,7 +7,8 @@ import "context"
 import "time"
 
 func main() {
-	req, err := http.NewRequest(http.MethodGet, "http://httpbin.org/get", nil)
+	server := "http://10.10.10.162:9801/v1/get_auth_random_num?type=0&id=emRsemRldkB6ZGx6LnRlY2g=" //http://www.baidu.com
+	req, err := http.NewRequest(http.MethodGet, server, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
