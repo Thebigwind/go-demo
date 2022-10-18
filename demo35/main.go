@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	fmt.Println(time.Now().AddDate(0, 0, -290).Format("2006-01-02 15:04:05"))
 	arr1 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	fmt.Println(shuffle(arr1))
 }
