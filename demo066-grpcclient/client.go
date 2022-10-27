@@ -3,13 +3,17 @@ package main
 import (
 	"context"
 	"google.golang.org/grpc"
-	"lch-tests/protobufs/workload"
+	//"xxxx/workload"
 	"log"
 	"time"
 )
 
 var (
-	WorkloadClient workload.WorkloadServiceClient
+//WorkloadClient workload.WorkloadServiceClient
+)
+
+const (
+	addr = "192.168.2.331:31878"
 )
 
 type Conn struct {
@@ -18,8 +22,8 @@ type Conn struct {
 }
 
 func InitConnections(addr string) {
-	cc := GetConn(addr)
-	WorkloadClient = workload.NewWorkloadServiceClient(cc)
+	//cc := GetConn(addr)
+	//WorkloadClient = workload.NewWorkloadServiceClient(cc)
 }
 
 func GetConn(addr string) *grpc.ClientConn {
