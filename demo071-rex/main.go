@@ -34,6 +34,9 @@ func main() {
 	id, pid, err := GetCertificateId("xxx")
 	fmt.Println(id)
 	fmt.Println(pid)
+
+	pid2, _ := GetCertificatePid("xx")
+	fmt.Printf("pid：%v", pid2)
 }
 
 func GetGmtTime(secStr string) (*time.Time, error) {
@@ -110,12 +113,42 @@ func GetCertificateId(certFile string) (string, string, error) {
 		return "", "", errors.New("get certificate id error")
 	}
 	pid := ""
-
-	infoStr := strings.TrimPrefix(matchArr[len(matchArr)-1], "ParentSerialNumber:")
+	infoStr := strings.TrimPrefix(matchArr[len(matchArr)-1], "ParentSerialNumber=")
 	if strings.Contains(infoStr, ",") {
 		sli := strings.Split(infoStr, ",")
 		pid = sli[0]
 	}
 
 	return id, pid, nil
+}
+
+func GetCertificatePid(certFile string) (string, error) {
+	if len(certFile) == 0 {
+		return "", errors.New("cert is null")
+	}
+
+	//cmdStr := fmt.Sprintf("openssl x509 -in %s -noout -text", certFile)
+	res := "Certificate:\n    Data:\n        Version: 3 (0x2)\n        Serial Number:\n            d5:eb:39:7f:db:d1:4f:d9\n    Signature Algorithm: sha256WithRSAEncryption\n        Issuer: C = CN, ST = Beijing, L = Beijing, O = zdlz, OU = zdlz\n        Validity\n            Not Before: Nov 11 15:28:04 2022 GMT\n            Not After : Nov  8 15:28:04 2032 GMT\n        Subject: C = CN, ST = Beijing, L = Beijing, O = zdlz, OU = zdlz\n        Subject Public Key Info:\n            Public Key Algorithm: rsaEncryption\n                Public-Key: (2048 bit)\n                Modulus:\n                    00:c3:3e:2a:11:72:47:a9:01:2e:dc:c9:a1:bf:49:\n                    3f:1d:c8:0b:af:d9:2f:62:44:0f:08:fe:c5:10:36:\n                    51:27:3f:e8:48:83:d9:82:22:ed:73:3d:57:e7:ae:\n                    15:66:e0:43:3d:06:d1:48:9f:c7:3c:2b:59:a0:3e:\n                    ea:4a:ea:b5:92:7b:d2:10:3b:b4:3b:68:85:7e:0b:\n                    ec:54:65:0d:6d:76:91:f3:3f:0e:79:64:64:96:56:\n                    71:d9:12:18:18:38:aa:d8:a7:eb:9a:72:fa:90:52:\n                    9e:a8:ea:82:11:f6:d4:f8:70:92:fa:64:af:b2:68:\n                    43:a0:d7:2a:e6:11:bd:9f:99:aa:1c:c6:fe:c0:45:\n                    9f:80:f3:13:7b:57:d4:6d:1a:42:b7:f9:09:cc:db:\n                    9d:9b:4c:03:a8:cc:aa:03:8b:00:84:71:73:ec:39:\n                    3a:d3:39:54:4e:9d:ad:c6:2e:3b:03:d1:79:1f:ec:\n                    6f:46:cd:74:ba:03:97:7f:17:fd:73:39:fc:2b:7f:\n                    90:e1:47:cb:81:26:48:80:a3:3c:2b:e0:7b:7c:05:\n                    aa:72:e2:b8:1c:20:bd:5a:7a:9f:ac:d0:34:00:0c:\n                    5a:5d:80:4b:b9:42:64:af:37:b3:b0:0b:49:fb:d2:\n                    71:45:27:9d:06:d3:b6:13:3f:9c:9b:3a:7d:86:6d:\n                    9d:65\n                Exponent: 65537 (0x10001)\n        X509v3 extensions:\n            1.2.3.4:\n                .6ParentSerialNumber=D856C57B86C0558A,MaxDeviceNum=10000\n    Signature Algorithm: sha256WithRSAEncryption\n         63:c2:ed:a7:e9:30:e3:31:d5:9d:3b:2a:d4:51:04:a8:2f:bd:\n         52:ca:d1:c1:cf:64:dc:93:75:71:08:c0:de:0f:cc:7e:26:74:\n         74:f9:30:1a:f8:1a:49:e7:08:bb:f7:e3:ee:b4:47:da:3e:bd:\n         00:cd:c3:8a:fa:54:b6:f8:99:73:af:ac:94:4b:b6:2b:ed:df:\n         3b:12:a9:0e:d8:fc:28:0d:cd:00:62:53:61:14:b1:cd:83:58:\n         5e:b8:27:c0:86:35:bd:aa:7d:7a:fb:6d:89:81:b1:f1:62:4c:\n         cd:69:9a:fd:b7:49:a7:e1:1b:cf:b9:19:19:21:97:c2:05:10:\n         d2:63:b8:3d:48:a9:2a:25:27:21:51:d7:bc:84:69:68:14:75:\n         b0:b2:4e:93:70:81:4e:b0:f7:71:92:a1:5f:d7:d9:e9:b5:76:\n         26:ab:8a:92:33:60:87:d8:00:75:f4:ed:1c:1e:70:f3:06:af:\n         f5:29:91:24:7f:f3:d8:fa:b2:fb:bf:f3:6d:26:93:f2:ff:d3:\n         d5:61:5d:73:b5:7d:1a:e0:ea:eb:1a:03:59:89:b7:77:d0:e4:\n         34:20:0b:8b:84:81:b2:10:2c:b0:4e:b2:bf:8c:81:56:b8:03:\n         db:8a:f1:dc:d3:3f:05:3c:57:05:cd:1d:af:3b:42:a2:03:2c:\n         2a:28:fd:6e"
+	res = "-----BEGIN CERTIFICATE-----\nMIIDUTCCAjmgAwIBAgIJANhWxXuGwFWKMA0GCSqGSIb3DQEBCwUAME8xCzAJBgNV\nBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMQ0wCwYD\nVQQKDAR6ZGx6MQ0wCwYDVQQLDAR6ZGx6MB4XDTIyMTExMTE1MjE1OFoXDTMyMTEw\nODE1MjE1OFowTzELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNV\nBAcMB0JlaWppbmcxDTALBgNVBAoMBHpkbHoxDTALBgNVBAsMBHpkbHowggEiMA0G\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDDPioRckepAS7cyaG/ST8dyAuv2S9i\nRA8I/sUQNlEnP+hIg9mCIu1zPVfnrhVm4EM9BtFIn8c8K1mgPupK6rWSe9IQO7Q7\naIV+C+xUZQ1tdpHzPw55ZGSWVnHZEhgYOKrYp+uacvqQUp6o6oIR9tT4cJL6ZK+y\naEOg1yrmEb2fmaocxv7ARZ+A8xN7V9RtGkK3+QnM252bTAOozKoDiwCEcXPsOTrT\nOVROna3GLjsD0Xkf7G9GzXS6A5d/F/1zOfwrf5DhR8uBJkiAozwr4Ht8Bapy4rgc\nIL1aep+s0DQADFpdgEu5QmSvN7OwC0n70nFFJ50G07YTP5ybOn2GbZ1lAgMBAAGj\nMDAuMCwGAyoDBAQlDCNQYXJlbnRTZXJpYWxOdW1iZXI9RTc2NkQxOUE5RkYyOTY3\nRDANBgkqhkiG9w0BAQsFAAOCAQEAcnrJYPgAq3+MHFUy1DQPWjr0R6819a/NJmse\nqWvGDBGULIMjOC9zEUklhpoVilRz++Whh+g24sEelaYSIXyBgTEsOAMK47j91tRq\nqON+0yynPk5dKG8xQMu+tOTYSoh0fmxTRM/sd61y1N5fTOl11TLQFlxGAK6QBy0T\nOygH6b6D9kmbCKXfZzaiSFE3YcIWK5HxwKfXhTkZ+obX2jxEA89HCuul35kMoMrS\nY4gcbY1Q2J2DMpWTb+TBLZxakv2NsEpX3pbu58rt3fOYp71ezNfezNIaLGvG4izz\n/7agiQgSfrHxz1Tu/SHpcTrO6zBcyvl63D6CAEQM2Axiv0+kgw==\n-----END CERTIFICATE-----"
+	res = "Certificate:\n    Data:\n        Version: 3 (0x2)\n        Serial Number: 15588864294521951626 (0xd856c57b86c0558a)\n    Signature Algorithm: sha256WithRSAEncryption\n        Issuer: C=CN, ST=Beijing, L=Beijing, O=zdlz, OU=zdlz\n        Validity\n            Not Before: Nov 11 15:21:58 2022 GMT\n            Not After : Nov  8 15:21:58 2032 GMT\n        Subject: C=CN, ST=Beijing, L=Beijing, O=zdlz, OU=zdlz\n        Subject Public Key Info:\n            Public Key Algorithm: rsaEncryption\n                Public-Key: (2048 bit)\n                Modulus:\n                    00:c3:3e:2a:11:72:47:a9:01:2e:dc:c9:a1:bf:49:\n                    3f:1d:c8:0b:af:d9:2f:62:44:0f:08:fe:c5:10:36:\n                    51:27:3f:e8:48:83:d9:82:22:ed:73:3d:57:e7:ae:\n                    15:66:e0:43:3d:06:d1:48:9f:c7:3c:2b:59:a0:3e:\n                    ea:4a:ea:b5:92:7b:d2:10:3b:b4:3b:68:85:7e:0b:\n                    ec:54:65:0d:6d:76:91:f3:3f:0e:79:64:64:96:56:\n                    71:d9:12:18:18:38:aa:d8:a7:eb:9a:72:fa:90:52:\n                    9e:a8:ea:82:11:f6:d4:f8:70:92:fa:64:af:b2:68:\n                    43:a0:d7:2a:e6:11:bd:9f:99:aa:1c:c6:fe:c0:45:\n                    9f:80:f3:13:7b:57:d4:6d:1a:42:b7:f9:09:cc:db:\n                    9d:9b:4c:03:a8:cc:aa:03:8b:00:84:71:73:ec:39:\n                    3a:d3:39:54:4e:9d:ad:c6:2e:3b:03:d1:79:1f:ec:\n                    6f:46:cd:74:ba:03:97:7f:17:fd:73:39:fc:2b:7f:\n                    90:e1:47:cb:81:26:48:80:a3:3c:2b:e0:7b:7c:05:\n                    aa:72:e2:b8:1c:20:bd:5a:7a:9f:ac:d0:34:00:0c:\n                    5a:5d:80:4b:b9:42:64:af:37:b3:b0:0b:49:fb:d2:\n                    71:45:27:9d:06:d3:b6:13:3f:9c:9b:3a:7d:86:6d:\n                    9d:65\n                Exponent: 65537 (0x10001)\n        X509v3 extensions:\n            1.2.3.4: \n                .#ParentSerialNumber=E766D19A9FF2967D\n    Signature Algorithm: sha256WithRSAEncryption\n         72:7a:c9:60:f8:00:ab:7f:8c:1c:55:32:d4:34:0f:5a:3a:f4:\n         47:af:35:f5:af:cd:26:6b:1e:a9:6b:c6:0c:11:94:2c:83:23:\n         38:2f:73:11:49:25:86:9a:15:8a:54:73:fb:e5:a1:87:e8:36:\n         e2:c1:1e:95:a6:12:21:7c:81:81:31:2c:38:03:0a:e3:b8:fd:\n         d6:d4:6a:a8:e3:7e:d3:2c:a7:3e:4e:5d:28:6f:31:40:cb:be:\n         b4:e4:d8:4a:88:74:7e:6c:53:44:cf:ec:77:ad:72:d4:de:5f:\n         4c:e9:75:d5:32:d0:16:5c:46:00:ae:90:07:2d:13:3b:28:07:\n         e9:be:83:f6:49:9b:08:a5:df:67:36:a2:48:51:37:61:c2:16:\n         2b:91:f1:c0:a7:d7:85:39:19:fa:86:d7:da:3c:44:03:cf:47:\n         0a:eb:a5:df:99:0c:a0:ca:d2:63:88:1c:6d:8d:50:d8:9d:83:\n         32:95:93:6f:e4:c1:2d:9c:5a:92:fd:8d:b0:4a:57:de:96:ee:\n         e7:ca:ed:dd:f3:98:a7:bd:5e:cc:d7:de:cc:d2:1a:2c:6b:c6:\n         e2:2c:f3:ff:b6:a0:89:08:12:7e:b1:f1:cf:54:ee:fd:21:e9:\n         71:3a:ce:eb:30:5c:ca:f9:7a:dc:3e:82:00:44:0c:d8:0c:62:\n         bf:4f:a4:83\n"
+	//获取父级id
+	compileRegex := regexp.MustCompile(`ParentSerialNumber=(.+)`)
+	matchArr := compileRegex.FindStringSubmatch(res)
+	if len(matchArr) == 0 {
+		return "", errors.New("get certificate id error")
+	}
+	pid := ""
+	fmt.Printf("\n")
+	fmt.Printf(matchArr[0])
+	fmt.Printf("\n")
+	fmt.Printf(strings.TrimPrefix(matchArr[len(matchArr)-1], "ParentSerialNumber="))
+	infoStr := strings.TrimPrefix(matchArr[len(matchArr)-1], "ParentSerialNumber=")
+	if strings.Contains(infoStr, ",") {
+		sli := strings.Split(infoStr, ",")
+		pid = sli[0]
+	} else {
+		pid = infoStr
+	}
+	fmt.Println(pid)
+	return pid, nil
 }
