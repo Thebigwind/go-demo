@@ -1,4 +1,4 @@
-package demo041
+package main
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 )
 
 //https://github.com/tjfoc/gmsm/blob/master/sm4/sm4.go
-const BlockSize = 16
+const BlockSize = 2
 
 var IV = make([]byte, BlockSize)
 
