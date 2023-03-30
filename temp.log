@@ -1,0 +1,12 @@
+time="2022-07-28T09:54:58+08:00" level=info msg="abcd Info:haha" Module=zdlz
+time="2022-07-28T09:54:58+08:00" level=info msg="abcdef:xxx" Module=zdlz
+time="2022-07-28T09:54:58+08:00" level=error msg="abce Errorf:xxx" Module=zdlz
+time="2022-07-28T09:54:58+08:00" level=warning msg="abcd Warf:xxxx" Module=zdlz
+time="2022-07-28T09:54:58+08:00" level=info msg=xxxxxx Module=zdlz
+time="2022-07-28T09:54:58+08:00" level=error msg="xxxxxxxxxx Error:%sxx" Module=zdlz
+time="2022-07-28T09:59:31+08:00" level=info msg="abcd Info:haha" Module=zdlz
+time="2022-07-28T09:59:31+08:00" level=info msg="abcdef:xxx" Module=zdlz
+time="2022-07-28T09:59:31+08:00" level=error msg="abce Errorf:xxx,code:1001,desc:detail err" Module=zdlz
+time="2022-07-28T09:59:31+08:00" level=warning msg="abcd Warf:xxxx" Module=zdlz
+time="2022-07-28T09:59:31+08:00" level=info msg=xxxxxx Module=zdlz
+time="2022-07-28T09:59:31+08:00" level=error msg="xxxxxxxxxx Error:%sxx" Module=zdlz
