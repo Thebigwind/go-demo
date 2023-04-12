@@ -109,6 +109,7 @@ result "启动nginx"
 
 
 ## 配置文件：
+https://www.cnblogs.com/Clannaddada/p/16790178.html
 
 #### 整体结构图
 

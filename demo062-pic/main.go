@@ -25,7 +25,7 @@ func decode() {
 		log.Fatalln(err)
 	}
 
-	out, _ := os.Create("./img.png")
+	out, _ := os.Create("./mvcc.png")
 	defer out.Close()
 
 	var opts jpeg.Options
