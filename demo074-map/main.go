@@ -20,6 +20,11 @@ func Deal(err error) {
 		fmt.Println("ooo")
 	}
 }
+
+func test() {
+	fmt.Println("")
+}
+
 func main() {
 	var err error
 	defer Deal(err)

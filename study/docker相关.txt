@@ -1,0 +1,33 @@
+以下是一个发布CRL吊销列表到OpenLDAP的详细示例：
+
+1. 首先，您需要创建一个CRL文件，其中包含要吊销的证书的序列号。您可以使用OpenSSL工具来创建CRL文件。以下是一个示例命令：
+
+```
+
+openssl ca -config ca.conf -gencrl -out crl.pem
+```
+
+其中，`ca.conf`是您的证书颁发机构（CA）配置文件的路径，`crl.pem`是要创建的CRL文件的名称。
+
+1. 将CRL文件复制到您的OpenLDAP服务器上，并确保该文件的权限正确设置为仅限管理员访问。建议将文件保存在`/etc/openldap/crl`目录下。
+2. 然后，编辑您的OpenLDAP配置文件（通常为`/etc/openldap/slapd.conf`），添加以下行以指定要使用的CRL文件：
+
+```
+bashCopy code
+TLSCRLCheck off
+TLSCRLFile /etc/openldap/crl/crl.pem
+```
+
+其中，`TLSCRLCheck off`关闭了OpenLDAP服务器的CRL检查，以便允许已吊销的证书访问LDAP。`TLSCRLFile`指定了CRL文件的路径和名称。
+
+1. 保存并关闭配置文件，并重新启动OpenLDAP服务器以使更改生效。
+2. 验证您的CRL是否已成功发布到OpenLDAP服务器。您可以使用以下命令来检查：
+
+```
+arduinoCopy code
+openssl crl -in /etc/openldap/crl/crl.pem -noout -text
+```
+
+该命令应该显示已吊销的证书的序列号和吊销日期。
+
+1. 最后，确保您的证书颁发机构（CA）定期更新CRL，并重新发布它以反映吊销的证书列表的变化。

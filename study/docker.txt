@@ -1,0 +1,212 @@
+ 162:
+ docker run -itd --privileged=true --network=host -v /var/log/golang/qskm-backend:/var/log/golang/qskm-backend -v /root/qskm/third_party:/root/qskm/third_party   --name=qskm-backend-0 qskm-backend:v0.0.1
+
+ docker run -itd --network=host --privileged=true --name=qskm-backend-0  -v /var/log/golang:/var/log/golang -v ./configs:/root/qskm/configs -v ./certfile:/root/qskm/certfile -v ./third_party:/root/qskm/third_party -v /dev/bus/usb:/dev/bus/usb -e TZ=Asia/Shanghai qskm-backend:v0.0.1
+
+
+[root@localhost]/home/golang# docker inspect qskm-backend-0
+[
+    {
+        "Id": "bcc049f503927edab1d86b9756987404564d263d53bfd63d65d972f445e4c906",
+        "Created": "2023-04-13T05:56:51.097504851Z",
+        "Path": "/bin/bash",
+        "Args": [
+            "-c",
+            "/root/qskm/qskm-backend --config /root/qskm/configs/default.yml serve"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 102227,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2023-04-13T05:56:55.88762439Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:e4a6bbe1716cff9a595c3b964baa14a7a0d57941d12edb2d14dea5a5bf6dc7e5",
+        "ResolvConfPath": "/var/lib/docker/containers/bcc049f503927edab1d86b9756987404564d263d53bfd63d65d972f445e4c906/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/bcc049f503927edab1d86b9756987404564d263d53bfd63d65d972f445e4c906/hostname",
+        "HostsPath": "/var/lib/docker/containers/bcc049f503927edab1d86b9756987404564d263d53bfd63d65d972f445e4c906/hosts",
+        "LogPath": "/var/lib/docker/containers/bcc049f503927edab1d86b9756987404564d263d53bfd63d65d972f445e4c906/bcc049f503927edab1d86b9756987404564d263d53bfd63d65d972f445e4c906-json.log",
+        "Name": "/qskm-backend-0",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/var/log/golang/qskm-backend:/var/log/golang/qskm-backend"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "host",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": true,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "label=disable"
+            ],
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": null,
+            "ReadonlyPaths": null
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/b97ec5572d745b65100c95336eac98684ae6165939ac7bf350f3f9b61dbb5cfd-init/diff:/var/lib/docker/overlay2/e6c941bb603b2f9b27fa0c4f356d6f141d00662549eafca8ff06481936097271/diff:/var/lib/docker/overlay2/4423bb4f37a03c669cfc9f18adf74daf4c86c8e5fd93528f4e73a69de7895494/diff:/var/lib/docker/overlay2/245bfe34a065045c6531d0630f5e14b37eeb5d17a077f6c188b756992578a7f7/diff:/var/lib/docker/overlay2/f6c05e5654a62d66b709862e6f315c7d4369d14ddc439f06ba9f92887aa2157d/diff:/var/lib/docker/overlay2/3afc15d4256f0dd897c785cef32234ae578962bf358105bf1d3512925e2f0cc7/diff:/var/lib/docker/overlay2/44ae1363ba1b7f6bf89df6e2b021e7ee6a6ebef2bfc3e2b3cf2878dbf6f16197/diff:/var/lib/docker/overlay2/1f6a5355733a8924add393b19bfde25bcf19df9be45abbbded38aab00f7b3603/diff:/var/lib/docker/overlay2/55847744c3eedbc544cfca49a20e18c945bf8bb61d0883e29db7637cb41cb83b/diff:/var/lib/docker/overlay2/e7b188220e4494e3cf298c61bc5b5f70f1f4d9f99b1d6e8f42f5be388f00bea2/diff:/var/lib/docker/overlay2/452cec81ca1345ddf5f6e60e0d3c538770c2fd7faa9953e00f8d43c60aa6759f/diff:/var/lib/docker/overlay2/0fdde6e1d3d242c04eae6cbbc4c1b9beddc8db9aa8cc5d51d3c7d02a35f8157e/diff:/var/lib/docker/overlay2/7f0d2e1780077a12b27d499821aec682115dc43231c7ee86a88f4790b10acfb4/diff",
+                "MergedDir": "/var/lib/docker/overlay2/b97ec5572d745b65100c95336eac98684ae6165939ac7bf350f3f9b61dbb5cfd/merged",
+                "UpperDir": "/var/lib/docker/overlay2/b97ec5572d745b65100c95336eac98684ae6165939ac7bf350f3f9b61dbb5cfd/diff",
+                "WorkDir": "/var/lib/docker/overlay2/b97ec5572d745b65100c95336eac98684ae6165939ac7bf350f3f9b61dbb5cfd/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/var/log/golang/qskm-backend",
+                "Destination": "/var/log/golang/qskm-backend",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "localhost",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "TZ=Asia/Shanghai",
+                "PATH=/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "USER=user",
+                "HOME=/home/user",
+                "GOPATH=/home/user/go",
+                "LD_LIBRARY_PATH=/root/qskm/libs"
+            ],
+            "Cmd": [
+                "/bin/bash",
+                "-c",
+                "/root/qskm/qskm-backend --config /root/qskm/configs/default.yml serve"
+            ],
+            "Image": "qskm-backend:v0.0.1",
+            "Volumes": null,
+            "WorkingDir": "/root/qskm",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "10f5c9b2823d14ffb26c7838f253c8b61088f13b5749e97e864e1d52bdd28fa5",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/default",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "host": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "c16af174f002947626b7bb342c13779110004e87e2efcc643f89b4834968c43a",
+                    "EndpointID": "a07e845937c105557b5f09c5a815ad3d1e7563bc757fcb1159d053f02724123a",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+
+
+

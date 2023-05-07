@@ -1,0 +1,136 @@
+
+
+进程cpu
+
+[DEBUG] preform sampling/do.py - # 22 run command 'top -b -n 1 -p 9480 | tail -n 1 | awk '{print $9}' '
+
+进程内存
+
+[DEBUG] preform sampling/do.py - # 22 run command 'cat /proc/9480/status | grep VmRSS | awk '{print $2}''
+
+磁盘读写性能
+rkb/s: 每秒读的数据量是以kb为单位 wkb/s: 每秒写的数据量以kb为单位
+[DEBUG] preform sampling/do.py - # 22 run command 'iostat -x sda | sed -n '7p' | awk '{print $6, $7, $14}''
+
+
+
+
+
+1，先用iostat查看磁盘io 是否读写负载很高
+
+用iostat -x 1 10
+
+如果 iostat 没有，要 yum install sysstat安装这个包，第一眼看下图红色圈圈的那个如果%util接近100%,表明I/O请求太多,I/O系统已经满负荷，磁盘可能存在瓶颈,一般%util大于70%,I/O压力就比较大，读取速度有较多的wait，然后再看其他的参数，
+
+![image-20230424173135017](/Users/me/Library/Application Support/typora-user-images/image-20230424173135017.png)
+
+
+
+2，找出使用io高的进程的工具  iotop
+
+yum install iotop -y
+
+直接执行 iotop 命令，然后看下图的显示，查看那个进程的读写，找出进程
+
+![image-20230424173310109](/Users/me/Library/Application Support/typora-user-images/image-20230424173310109.png)
+
+
+
+网卡性能
+
+[DEBUG] preform sampling/do.py - # 22 run command 'sar -n DEV 1 1 | grep enp0s31f6 | head -n 1 | awk '{print $4, $5, $6, $7}' '
+
+
+
+
+
+================
+
+
+
+
+
+1.iostat命令详解
+CPU 内存 磁盘 网络 四大子系统
+
+1.1 查看提供iostat命令的软件包
+yum provides "*/iostat"
+yum -y install systat
+
+iostat 1 显示实时的数据
+iostat  结果自系统启动以来的平均值
+
+1.2 iostat命令CPU指标
+%user		应用程序消耗CPU资源占比
+%nice		进程优先级调整占用CPU资源
+%system		内核占用CPU过高
+%iowait		IO的等待占用CPU时间片，高说明CPU因为IO原因增高。IO的等待，磁盘无法及时处理，一直在CPU的队列中等待。
+%steal		与虚拟化有关，用于特殊指令集的转换，硬件辅助虚拟化提高了虚拟化效率。
+%idle		cpu的空闲率
+
+单一程序一瞬间只能运行在一颗CPU上
+
+1.3 dd命令测试存储性能
+dd if=/dev/zero of=/tmp/test bs=4k count=102400 oflag=direct        //direct: 直接写入硬盘，绕过缓存
+sysctl -w vm.drop_caches=3                                         //清空缓存
+
+1.4 查看CPU性能
+mpstate -P ALL 1   			                              //查询CPU的试用情况，1代表每秒显示一次。
+ps axo %cpu,%mem,pid,comm,psr | grep str                 //查询cpu上运行了哪些应用程序
+
+单一的应用程序，仅运行在一颗特定的处理器上，不会切换到其他处理器。可以指定一个应用程序运行在指定的处理器上。如果有两个应用程序运行在一个cpu上，即便其他处理器空闲，也不会切换到其他cpu上，可以人为切换。
+
+1.5 衡量硬盘的性能指标
+衡量硬盘的性能指标：
+1.IOPS 每秒处理的IO数目 小IO 小于64k
+2.带宽 每秒写入的数据量 MB/s 大IO 大于256k
+3.时延 一个IO处理所花费的时间
+
+单盘的IOPS是有标称的，
+
+如果客户的性能要求是20000的IOPS，如果全部采用的是SAS硬盘，每块SAS硬盘的标准是300，则如何规划存储，需要多少块硬盘。
+
+300*30/（0.8+0.2/0.03）
+----------------------------- =IOPS
+100%-30%=70%
+
+1.6 iostat命令IO性能指标
+tps	每秒中处理的数目
+kB_read/s	每秒读速率
+kB_wrtn/s	每秒写速率
+kB_read		自开机以来一共处理的读请求
+kB_wrtn		自开机以来一共处理的写请求
+
+IO大小计算公式
+IO大小=(kB_read/s+kB_wrtn/s)/tps
+
+iostate -d /dev/vda 1 10
+iostate -x /dev/vda 1 5			//显示更多扩展信息
+r/s								//每秒读请求的数量
+w/s								//每秒写请求的数量
+sec/s							//每秒读写的总扇区数
+rsec/s							//每秒读的扇区数
+wsec/s							//每秒写的扇区数
+rqm/s							//每秒请求的io数量
+rrqm/s							//每秒读请求的io数量
+wrqm/s							//每秒写请求的io数量
+%rrqm							//读请求的百分比
+%wrqm							//写请求的百分比
+areq-sz							//IO请求的平均大小
+rareq-sz						//读IO请求的平均大小
+wareq-sz 						//写IO请求的平均大小
+await							//IO请求的平均等待时间
+r_await							//读IO请求的平均等待时间
+w_await							//写IO请求的平均等待时间
+aqu-sz							//队列里面一共有多少个请求
+svctm							//平均每个IO的服务时间
+%util								//IO占用的百分比
+
+
+顺序业务
+%util 应接近100%
+rkb/s，wkb/s应达到通道理论带宽
+avarg-sz应等于上层业务的Block大小
+————————————————
+版权声明：本文为CSDN博主「linux运维那些事儿」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_43770382/article/details/129178189

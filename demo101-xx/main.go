@@ -1,38 +1,68 @@
 package main
 
-//https://juejin.cn/post/7176220436714225721
-
+/*
 import (
-	"crypto/rand"
+	//"encoding/asn1"
+	"crypto/x509"
 	"encoding/base64"
+	"encoding/pem"
 	"fmt"
-)
+	"io/ioutil"
 
-func generateAppKey() string {
-	key := make([]byte, 32)
-	_, err := rand.Read(key)
-	if err != nil {
-		panic(err)
-	}
-	return base64.StdEncoding.EncodeToString(key)
-}
-
-func generateAppSecret() string {
-	secret := make([]byte, 64)
-	_, err := rand.Read(secret)
-	if err != nil {
-		panic(err)
-	}
-	return base64.StdEncoding.EncodeToString(secret)
-}
+	"github.com/go-ldap/ldap/v3"
 
 func main() {
-	appKey := generateAppKey()
-	appSecret := generateAppSecret()
+	// 读取数字证书文件
+	certBytes, err := ioutil.ReadFile("cert.pem")
+	if err != nil {
+		fmt.Println("Error reading file:", err)
+		return
+	}
 
-	fmt.Println("App Key:", appKey)
-	fmt.Println("App Secret:", appSecret)
+	// 解析数字证书
+	certBlock, _ := pem.Decode(certBytes)
+	cert, err := x509.ParseCertificate(certBlock.Bytes)
+	if err != nil {
+		fmt.Println("Error parsing certificate:", err)
+		return
+	}
 
-	// Use the app key and secret in your application
-	// ...
+	// 将数字证书转换为LDAP条目
+	entry := ldap.NewEntry(fmt.Sprintf("cn=%s,ou=certificates,o=example", cert.Subject.CommonName), []ldap.Attribute{
+		ldap.Attribute{
+			Type: "objectClass",
+			Vals: []string{"top", "inetOrgPerson"},
+		},
+		ldap.Attribute{
+			Type: "cn",
+			Vals: []string{cert.Subject.CommonName},
+		},
+		ldap.Attribute{
+			Type: "userCertificate;binary",
+			Vals: []string{base64.StdEncoding.EncodeToString(cert.Raw)},
+		},
+	})
+
+	// 将LDAP条目发布到OpenLDAP服务器
+	conn, err := ldap.Dial("tcp", "ldap.example.com:389")
+	if err != nil {
+		fmt.Println("Error connecting to LDAP server:", err)
+		return
+	}
+	defer conn.Close()
+
+	err = conn.Bind("cn=admin,o=example", "password")
+	if err != nil {
+		fmt.Println("Error binding to LDAP server:", err)
+		return
+	}
+
+	err = conn.Add(entry)
+	if err != nil {
+		fmt.Println("Error adding entry:", err)
+		return
+	}
+
+	fmt.Println("Certificate added successfully.")
 }
+*/
