@@ -1,6 +1,8 @@
 package main
 
 import (
+	"crypto/x509"
+	"encoding/pem"
 	"fmt"
 	"github.com/go-ldap/ldap/v3"
 	"gopkg.in/alecthomas/kingpin.v2"
@@ -33,6 +35,50 @@ func main() {
 	//增加
 }
 
+func QueryCert(baseDN string, filter string) (error, []*ldap.Entry) {
+	searchRequest := ldap.NewSearchRequest(
+		baseDN,
+		ldap.ScopeWholeSubtree, //查找范围：整个树
+		ldap.NeverDerefAliases, //在搜索中别名(cn, ou)是否废弃
+		0,                      // 大小设置,一般设置为0
+		0,                      //时间设置,一般设置为0
+		false,
+		filter, //过滤条件
+		[]string{"dn", "cn", "uid", "sn", "userCertificate;binary"}, //返回的属性值
+		nil,
+	)
+	searchResult, err := GetLdapConn().Search(searchRequest)
+	if err != nil {
+		log.Println("can't search ", err.Error())
+		return err, nil
+	}
+
+	if len(searchResult.Entries) == 0 {
+		fmt.Println("No certificate found")
+		return fmt.Errorf("no certificate found"), nil
+	}
+	certBytes := searchResult.Entries[0].GetAttributeValue("userCertificate;binary")
+	if certBytes == "" {
+		fmt.Println("No certificate found")
+		return fmt.Errorf("no certificate found"), nil
+	}
+
+	block, _ := pem.Decode([]byte(certBytes))
+	if block == nil {
+		fmt.Println("Failed to decode certificate")
+		return fmt.Errorf("Failed to decode certificate"), nil
+	}
+	cert, err := x509.ParseCertificate(block.Bytes)
+	if err != nil {
+		fmt.Printf("Failed to parse certificate: %v\n", err)
+		return fmt.Errorf("Failed to parse certificate"), nil
+	}
+	fmt.Printf("cert:%v\n", cert)
+
+	//os.Exit(0)
+	return nil, searchResult.Entries
+}
+
 //查询
 func Query(baseDN string, filter string) (error, []*ldap.Entry) {
 	searchRequest := ldap.NewSearchRequest(
@@ -43,7 +89,7 @@ func Query(baseDN string, filter string) (error, []*ldap.Entry) {
 		0,                      //时间设置,一般设置为0
 		false,
 		filter, //过滤条件
-		[]string{"dn", "cn", "uidNumber", "gidNumber", "description", "objectClass"}, //返回的属性值
+		[]string{"dn", "cn", "uid", "sn", "userpassword", "homedirectory", "uidNumber", "gidNumber", "description", "objectClass"}, //返回的属性值
 		nil,
 	)
 	searchResult, err := GetLdapConn().Search(searchRequest)

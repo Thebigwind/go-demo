@@ -39,25 +39,27 @@ func TestQuery1(t *testing.T) {
 	}
 	for _, v := range data {
 		//v.PrettyPrint(4)
-		fmt.Println(v.GetAttributeValues("gidNumber"))
+		fmt.Println("------")
 		fmt.Println(v.GetAttributeValues("homeDirectory"))
+		fmt.Println(v.GetAttributeValues("gidNumber"))
+		fmt.Println(v.GetAttributeValues("userPassword"))
 		fmt.Println(v.GetAttributeValues("uid"))
 		fmt.Println(v.GetAttributeValues("uidNumber"))
 		fmt.Println(v.GetAttributeValues("cn"))
-
 	}
 }
 
-func TestQuery2(t *testing.T) {
+func TestQueryCert(t *testing.T) {
 	err := TestInit()
 	if err != nil {
 		fmt.Printf("init err:%s", err)
 	}
 
-	baseDN := "ou=certs,dc=zdlz,dc=com"
+	baseDN := "uid=john,ou=certs,dc=zdlz,dc=com"
 	filter := "(objectClass=*)"
+	//filter = "(userCertificateSerialNumber=123456789)"
 
-	err, data := Query(baseDN, filter)
+	err, data := QueryCert(baseDN, filter)
 	if err != nil {
 		t.Log("query err:", err)
 	}
@@ -136,6 +138,30 @@ func TestAdd2(t *testing.T) {
 	}
 }
 
+func TestAdd3(t *testing.T) {
+	err := TestInit()
+	if err != nil {
+		fmt.Printf("init err:%s", err)
+		return
+	}
+
+	// 准备要发布的用户信息
+	dn := "uid=johndoe1,ou=cert,dc=zdlz,dc=com"
+	attrs := map[string][]string{
+		"givenName":    {"John1"},
+		"userPassword": {"{SSHA}i9y43hf8ygrf49y2h38fh298g"},
+		"cn":           {"John Doe1"},
+		"sn":           {"Doe1"},
+		"uid":          {"lxf"},
+		"objectClass":  {"top", "person", "organizationalPerson", "inetOrgPerson"},
+		"mail":         {"johndoe1@example.com"},
+	}
+
+	if err := Add(dn, attrs); err != nil {
+		t.Log("add err:", err)
+	}
+}
+
 func TestAddDN(t *testing.T) {
 	err := TestInit()
 	if err != nil {
@@ -153,16 +179,33 @@ func TestAddDN(t *testing.T) {
 	}
 }
 
-func TestPublish(t *testing.T) {
+func TestAddDN2(t *testing.T) {
 	err := TestInit()
 	if err != nil {
 		fmt.Printf("init err:%s", err)
 		return
 	}
 
-	if err := publish(); err != nil {
+	dn := "ou=users,dc=zdlz,dc=com"
+	attrs := map[string][]string{
+		"objectClass": {"organizationalUnit"},
+	}
+	if err := Add(dn, attrs); err != nil {
 		t.Log("add err:", err)
 	}
+}
+
+func TestPubCert(t *testing.T) {
+	err := TestInit()
+	if err != nil {
+		fmt.Printf("init err:%s", err)
+		return
+	}
+	certPath := "root.crt"
+	if err := pubCert(certPath); err != nil {
+		t.Log("add err:", err)
+	}
+	t.Log("test success")
 }
 func TestPublish2(t *testing.T) {
 	err := TestInit()

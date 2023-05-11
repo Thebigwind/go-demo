@@ -13,7 +13,83 @@ import (
 
 //这个示例代码将一个 PEM 格式的证书文件加载到内存中，并将其发布到 OpenLDAP 服务器上的 ou=certificates,dc=example,dc=com 节点下。
 //请注意，这个示例代码只处理单个证书，如果您需要批量发布证书，需要对代码进行修改。另外，您可能需要根据您的 LDAP 服务器设置调整代码中的服务器地址和绑定参数。
-func publish() error {
+
+func parseCert(certPath string) (*x509.Certificate, error) {
+	// 加载证书
+	certData, err := ioutil.ReadFile(certPath)
+	if err != nil {
+		log.Printf("err:%s", err)
+		return nil, err
+	}
+
+	data := string(certData)[27:1149]
+	fmt.Println(data)
+	// 解码证书
+	block, _ := pem.Decode(certData)
+	if block == nil {
+		log.Printf("Failed to decode certificate")
+		return nil, err
+	}
+
+	cert, err := x509.ParseCertificate(block.Bytes)
+
+	if err != nil {
+		log.Printf("err:%s", err)
+		return nil, err
+	}
+	return cert, nil
+}
+
+func pubCert(certPath string) error {
+	cert, err := parseCert(certPath)
+	if err != nil {
+		return err
+	}
+	if err = publish(cert); err != nil {
+		return err
+	}
+	return nil
+}
+func publish(cert *x509.Certificate) error {
+
+	fmt.Println("------------")
+	//fmt.Printf("subject:%+v\n", cert.Subject)
+	//fmt.Printf("Issuer:%+v\n", cert.Issuer)
+	////fmt.Printf("Issuer raw:%+v\n", string(cert.RawIssuer))
+	SerialNumberStr := cert.SerialNumber.Text(16)
+	fmt.Printf("SerialNumber:%+v,SerialStr:%s\n", cert.SerialNumber, SerialNumberStr)
+	//fmt.Printf("Raw:%+v\n", cert.Raw)
+	//fmt.Printf("NotBefore:%+v\n", cert.NotBefore)
+	//fmt.Printf("NotAfter:%+v\n", cert.NotAfter)
+	//fmt.Printf("Extensions:%+v\n", cert.Extensions)
+	fmt.Printf("xxx:%v\n", base64.StdEncoding.EncodeToString(cert.Raw))
+	fmt.Printf("+cert.Subject.CommonName:%v\n", cert.Subject.CommonName)
+	fmt.Println("------------")
+	// 准备证书对象
+	entry := ldap.NewAddRequest("cn="+cert.Subject.CommonName+",ou=certs,dc=zdlz,dc=com", nil)
+	entry.Attribute("objectClass", []string{"top", "person", "inetOrgPerson", "pkiUser"}) // "inetOrgPerson",
+	entry.Attribute("cn", []string{cert.Subject.CommonName})
+	entry.Attribute("sn", []string{SerialNumberStr})
+	aa := "MIIDODCCAiACCQCH3OLpJ4IsozANBgkqhkiG9w0BAQUFADBeMQswCQYDVQQGEwJDTjEQMA4GA1UECAwHQmVpamluZzEQMA4GA1UEBwwHQmVpamluZzENMAsGA1UECgwEemRsejENMAsGA1UECwwEemRsejENMAsGA1UEAwwEcm9vdDAeFw0yMzA0MjUwMzM0MTdaFw0zMzA0MjIwMzM0MTdaMF4xCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMQ0wCwYDVQQKDAR6ZGx6MQ0wCwYDVQQLDAR6ZGx6MQ0wCwYDVQQDDARyb290MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+xMgtkVyjBwUHcSqh4NIQ+GskSCVdYtztQD6coic8g9pH/WNWYf0kQmVLl8XySB50wBwUpXGKYCWhZcP0/bMULEzjfbZr2KKjKSd4Xt0m/5gLX2bhCbIQpPyQisnWS46i+yt2LgzLsk9zJyghQgdNJVj054mIKCLHjmG4/9YoiLfnbNiwMiMUMdu7X5Grp0CJe9sB1cr6Nnby234Kopvd0snWfNVepyO7ETjMpqGUqsaWVU/X2EWGCTaYtIN4dQYnKOBIKn4HrGSkHh5cHtYvoi29BDq7x11BN9Wuw+ls1Bp8MsYf4JmRj/YhBPsOnGLEsoiCyLPTEkS+SBMViuehwIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQCcxvMe6J9iGFztb7ODps4IMMQ0UvS4PclV9zMvQE3VSsu6U898j7HIqmIVDaf3e1/uP7JVtEGPE4C9n5KXV1Q2j2kygmZXewBlWVMknFYzK/MXFxHhvs3JfJrJDVWBQb5iFu5KgHI6dmFFq91OWdjvECBnomrRaTGOlIBsaeFSEekC5yFRwzpHdhiPieMen4D8f2nl0FlAu5jGMwcH5Ae4TSSIGnKzX7toCSkHD99azVTZ4/CpBW57cXPLckZOg8s2vuXluElSlS+6DLgUWVSwCQvzYbLWs+T+cgs2VA/XN2m+FIiHhwr8N303vL5SjUn9DLSDgBiGX4z1ifJIsKCu"
+	entry.Attribute("userCertificate;binary", []string{aa})
+	//entry.Attribute("userCertificate;binary", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+
+	//entry.Attribute("userCertificate;binary", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+	//entry.Attribute("userCertificate", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+	//entry.Attribute("data", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+	l := GetLdapConn()
+	// 发布证书
+	err := l.Add(entry)
+	if err != nil {
+		log.Printf("err:%s", err)
+		return err
+	}
+
+	fmt.Println("Certificate added successfully")
+	return nil
+}
+
+func publish1() error {
 	// 加载证书
 	certData, err := ioutil.ReadFile("root.crt")
 	if err != nil {
@@ -48,12 +124,14 @@ func publish() error {
 	fmt.Println("------------")
 	// 准备证书对象
 	entry := ldap.NewAddRequest("cn="+cert.Subject.CommonName+",ou=certs,dc=zdlz,dc=com", nil)
-	entry.Attribute("objectClass", []string{"top", "inetOrgPerson"})
+	entry.Attribute("objectClass", []string{"top", "inetOrgPerson", "organizationalPerson", "pkiUser"}) // "inetOrgPerson",
 	entry.Attribute("cn", []string{cert.Subject.CommonName})
 	//entry.Attribute("cn", []string{cert.Subject.CommonName})
-	entry.Attribute("sn", []string{"01"}) //cert.Subject.SerialNumber
-	//entry.Attribute("userCertificate;binary", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
-
+	//entry.Attribute("sn", []string{"01"}) //cert.Subject.SerialNumber
+	entry.Attribute("sn", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+	entry.Attribute("userCertificate;binary", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+	//entry.Attribute("userCertificate", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+	//entry.Attribute("data", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
 	l := GetLdapConn()
 	// 发布证书
 	err = l.Add(entry)

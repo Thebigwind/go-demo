@@ -1,5 +1,88 @@
 package main
 
+import (
+	"fmt"
+	"github.com/go-ldap/ldap/v3"
+)
+
+func main() {
+	// 连接 OpenLDAP 服务器
+	l, err := ldap.Dial("tcp", "10.10.10.125:389")
+	if err != nil {
+		fmt.Println("连接 OpenLDAP 服务器失败：", err)
+		return
+	}
+	defer l.Close()
+
+	// 绑定管理员账户
+	err = l.Bind("cn=admin,dc=zdlz,dc=com", "123456")
+	if err != nil {
+		fmt.Println("绑定管理员账户失败：", err)
+		return
+	}
+
+	// 准备要发布的用户信息
+	dn := "uid=johndoe1,ou=cert,dc=zdlz,dc=com"
+
+	entry := ldap.NewAddRequest(dn, nil)
+	entry.Attribute("objectClass", []string{"top", "certificationAuthority", "pkiCA"}) // "inetOrgPerson",
+	entry.Attribute("cn", []string{"John Doe1"})
+	entry.Attribute("sn", []string{"Doe1"})
+	entry.Attribute("givenName", []string{"John1"})
+	entry.Attribute("uid", []string{"johndoe1"})
+	entry.Attribute("userPassword", []string{"{SSHA}i9y43hf8ygrf49y2h38fh298g"})
+	entry.Attribute("mail", []string{"johndoe1@example.com"})
+
+	// 发布用户信息
+	//entry := ldap.NewEntry(dn, attributes)
+	err = l.Add(entry)
+	if err != nil {
+		fmt.Println("发布用户信息失败：", err)
+		return
+	}
+
+	fmt.Println("用户信息已成功发布到 OpenLDAP。")
+}
+
+func user() {
+	// 连接 OpenLDAP 服务器
+	l, err := ldap.Dial("tcp", "10.10.10.125:389")
+	if err != nil {
+		fmt.Println("连接 OpenLDAP 服务器失败：", err)
+		return
+	}
+	defer l.Close()
+
+	// 绑定管理员账户
+	err = l.Bind("cn=admin,dc=zdlz,dc=com", "123456")
+	if err != nil {
+		fmt.Println("绑定管理员账户失败：", err)
+		return
+	}
+
+	// 准备要发布的用户信息
+	dn := "uid=johndoe1,ou=people,dc=zdlz,dc=com"
+
+	entry := ldap.NewAddRequest(dn, nil)
+	entry.Attribute("objectClass", []string{"top", "person", "organizationalPerson", "inetOrgPerson"}) // "inetOrgPerson",
+	entry.Attribute("cn", []string{"John Doe1"})
+	entry.Attribute("sn", []string{"Doe1"})
+	entry.Attribute("givenName", []string{"John1"})
+	entry.Attribute("uid", []string{"johndoe1"})
+	entry.Attribute("userPassword", []string{"{SSHA}i9y43hf8ygrf49y2h38fh298g"})
+	entry.Attribute("mail", []string{"johndoe1@example.com"})
+
+	// 发布用户信息
+	//entry := ldap.NewEntry(dn, attributes)
+	err = l.Add(entry)
+	if err != nil {
+		fmt.Println("发布用户信息失败：", err)
+		return
+	}
+
+	fmt.Println("用户信息已成功发布到 OpenLDAP。")
+}
+
 //
 //import (
 //	"crypto/rand"
