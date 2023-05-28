@@ -1,8 +1,6 @@
 package main
 
 import (
-	"crypto/x509"
-	"encoding/pem"
 	"fmt"
 	"github.com/go-ldap/ldap/v3"
 	"gopkg.in/alecthomas/kingpin.v2"
@@ -57,23 +55,37 @@ func QueryCert(baseDN string, filter string) (error, []*ldap.Entry) {
 		fmt.Println("No certificate found")
 		return fmt.Errorf("no certificate found"), nil
 	}
-	certBytes := searchResult.Entries[0].GetAttributeValue("userCertificate;binary")
-	if certBytes == "" {
-		fmt.Println("No certificate found")
-		return fmt.Errorf("no certificate found"), nil
-	}
+	//certBytes := searchResult.Entries[0].GetRawAttributeValue("userCertificate;binary") //binary
+	//if len(certBytes) == 0 {
+	//	fmt.Println("No certificate found")
+	//	return fmt.Errorf("no certificate found"), nil
+	//}
+	//cert := base64.StdEncoding.EncodeToString(certBytes)
+	//fmt.Printf("cert:%v\n", string(cert))
+	fmt.Println("-----------")
+	//// 遍历搜索结果并打印证书信息
+	//for _, entry := range searchResult.Entries {
+	//	fmt.Printf("DN: %s\n", entry.DN)
+	//
+	//	for _, certBytes := range entry.GetRawAttributeValues("userCertificate;binary") {
+	//		cert := base64.StdEncoding.EncodeToString(certBytes)
+	//		fmt.Printf("Certificate: %s\n", cert)
+	//	}
+	//}
 
-	block, _ := pem.Decode([]byte(certBytes))
-	if block == nil {
-		fmt.Println("Failed to decode certificate")
-		return fmt.Errorf("Failed to decode certificate"), nil
-	}
-	cert, err := x509.ParseCertificate(block.Bytes)
-	if err != nil {
-		fmt.Printf("Failed to parse certificate: %v\n", err)
-		return fmt.Errorf("Failed to parse certificate"), nil
-	}
-	fmt.Printf("cert:%v\n", cert)
+	//block, _ := pem.Decode([]byte(certBytes))
+	//if block == nil {
+	//	fmt.Println("Failed to decode certificate")
+	//	return fmt.Errorf("Failed to decode certificate"), nil
+	//}
+	//cert, err := x509.ParseCertificate(block.Bytes)
+	//if err != nil {
+	//	fmt.Printf("Failed to parse certificate: %v\n", err)
+	//	return fmt.Errorf("Failed to parse certificate"), nil
+	//}
+	//fmt.Printf("cert:%v\n", cert)
+
+	//
 
 	//os.Exit(0)
 	return nil, searchResult.Entries

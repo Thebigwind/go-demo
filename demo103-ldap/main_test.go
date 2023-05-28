@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"fmt"
 	"testing"
 )
@@ -63,8 +64,24 @@ func TestQueryCert(t *testing.T) {
 	if err != nil {
 		t.Log("query err:", err)
 	}
-	for _, v := range data {
-		v.PrettyPrint(4)
+
+	for _, entry := range data {
+		fmt.Printf("DN: %s\n", entry.DN)
+		//for _, certBytes := range entry.GetRawAttributeValues("userCertificate;binary") {
+		//	cert := base64.StdEncoding.EncodeToString(certBytes)
+		//	//如果需要使用证书数据，可以使用 base64.StdEncoding.DecodeString 方法将其转换回二进制数据
+		//	fmt.Printf("Certificate: %s\n", cert)
+		//}
+		certBytes := entry.GetRawAttributeValue("userCertificate;binary")
+		cert := base64.StdEncoding.EncodeToString(certBytes)
+		sn := entry.GetAttributeValue("sn")
+		cn := entry.GetAttributeValue("cn")
+		uid := entry.GetAttributeValue("uid")
+		fmt.Printf("Certificate: %s\n", cert)
+		fmt.Printf("sn: %s\n", sn)
+		fmt.Printf("cn: %s\n", cn)
+		fmt.Printf("uid: %s\n", uid)
+
 	}
 }
 

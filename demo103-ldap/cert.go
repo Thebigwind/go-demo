@@ -71,6 +71,7 @@ func publish(cert *x509.Certificate) error {
 	entry.Attribute("cn", []string{cert.Subject.CommonName})
 	entry.Attribute("sn", []string{SerialNumberStr})
 	aa := "MIIDODCCAiACCQCH3OLpJ4IsozANBgkqhkiG9w0BAQUFADBeMQswCQYDVQQGEwJDTjEQMA4GA1UECAwHQmVpamluZzEQMA4GA1UEBwwHQmVpamluZzENMAsGA1UECgwEemRsejENMAsGA1UECwwEemRsejENMAsGA1UEAwwEcm9vdDAeFw0yMzA0MjUwMzM0MTdaFw0zMzA0MjIwMzM0MTdaMF4xCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMQ0wCwYDVQQKDAR6ZGx6MQ0wCwYDVQQLDAR6ZGx6MQ0wCwYDVQQDDARyb290MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+xMgtkVyjBwUHcSqh4NIQ+GskSCVdYtztQD6coic8g9pH/WNWYf0kQmVLl8XySB50wBwUpXGKYCWhZcP0/bMULEzjfbZr2KKjKSd4Xt0m/5gLX2bhCbIQpPyQisnWS46i+yt2LgzLsk9zJyghQgdNJVj054mIKCLHjmG4/9YoiLfnbNiwMiMUMdu7X5Grp0CJe9sB1cr6Nnby234Kopvd0snWfNVepyO7ETjMpqGUqsaWVU/X2EWGCTaYtIN4dQYnKOBIKn4HrGSkHh5cHtYvoi29BDq7x11BN9Wuw+ls1Bp8MsYf4JmRj/YhBPsOnGLEsoiCyLPTEkS+SBMViuehwIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQCcxvMe6J9iGFztb7ODps4IMMQ0UvS4PclV9zMvQE3VSsu6U898j7HIqmIVDaf3e1/uP7JVtEGPE4C9n5KXV1Q2j2kygmZXewBlWVMknFYzK/MXFxHhvs3JfJrJDVWBQb5iFu5KgHI6dmFFq91OWdjvECBnomrRaTGOlIBsaeFSEekC5yFRwzpHdhiPieMen4D8f2nl0FlAu5jGMwcH5Ae4TSSIGnKzX7toCSkHD99azVTZ4/CpBW57cXPLckZOg8s2vuXluElSlS+6DLgUWVSwCQvzYbLWs+T+cgs2VA/XN2m+FIiHhwr8N303vL5SjUn9DLSDgBiGX4z1ifJIsKCu"
+	//aa = []byte("certificate data")
 	entry.Attribute("userCertificate;binary", []string{aa})
 	//entry.Attribute("userCertificate;binary", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
 
@@ -146,7 +147,7 @@ func publish1() error {
 
 func publish2() error {
 	// 加载证书
-	certData, err := ioutil.ReadFile("root.crt")
+	certData, err := ioutil.ReadFile("/Users/me/Thebigwind/go-demo/demo103-ldap/root.crt")
 	if err != nil {
 		log.Printf("err:%s", err)
 		return err
@@ -169,12 +170,14 @@ func publish2() error {
 
 	// 准备证书对象
 	entry := ldap.NewAddRequest("cn="+cert.Subject.CommonName+",ou=certs,dc=zdlz,dc=com", nil)
-	entry.Attribute("objectClass", []string{"top", "pkiCA"}) //ipsecCert
+	entry.Attribute("objectClass", []string{"top", "inetOrgPerson", "person", "pkiUser"}) //ipsecCert
 	entry.Attribute("cn", []string{cert.Subject.CommonName})
-	//entry.Attribute("cn", []string{cert.Subject.CommonName})
 	entry.Attribute("sn", []string{"01"}) //cert.Subject.SerialNumber
-	entry.Attribute("userCertificate:", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
-	//entry.Attribute("userCertificate;binary", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+	////cert.Raw = []byte("MIIDODCCAiACCQCH3OLpJ4IsozANBgkqhkiG9w0BAQUFADBeMQswCQYDVQQGEwJDTjEQMA4GA1UECAwHQmVpamluZzEQMA4GA1UEBwwHQmVpamluZzENMAsGA1UECgwEemRsejENMAsGA1UECwwEemRsejENMAsGA1UEAwwEcm9vdDAeFw0yMzA0MjUwMzM0MTdaFw0zMzA0MjIwMzM0MTdaMF4xCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMQ0wCwYDVQQKDAR6ZGx6MQ0wCwYDVQQLDAR6ZGx6MQ0wCwYDVQQDDARyb290MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+xMgtkVyjBwUHcSqh4NIQ+GskSCVdYtztQD6coic8g9pH/WNWYf0kQmVLl8XySB50wBwUpXGKYCWhZcP0/bMULEzjfbZr2KKjKSd4Xt0m/5gLX2bhCbIQpPyQisnWS46i+yt2LgzLsk9zJyghQgdNJVj054mIKCLHjmG4/9YoiLfnbNiwMiMUMdu7X5Grp0CJe9sB1cr6Nnby234Kopvd0snWfNVepyO7ETjMpqGUqsaWVU/X2EWGCTaYtIN4dQYnKOBIKn4HrGSkHh5cHtYvoi29BDq7x11BN9Wuw+ls1Bp8MsYf4JmRj/YhBPsOnGLEsoiCyLPTEkS+SBMViuehwIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQCcxvMe6J9iGFztb7ODps4IMMQ0UvS4PclV9zMvQE3VSsu6U898j7HIqmIVDaf3e1/uP7JVtEGPE4C9n5KXV1Q2j2kygmZXewBlWVMknFYzK/MXFxHhvs3JfJrJDVWBQb5iFu5KgHI6dmFFq91OWdjvECBnomrRaTGOlIBsaeFSEekC5yFRwzpHdhiPieMen4D8f2nl0FlAu5jGMwcH5Ae4TSSIGnKzX7toCSkHD99azVTZ4/CpBW57cXPLckZOg8s2vuXluElSlS+6DLgUWVSwCQvzYbLWs+T+cgs2VA/XN2m+FIiHhwr8N303vL5SjUn9DLSDgBiGX4z1ifJIsKCu")
+	cert.Raw = []byte("test")
+	entry.Attribute("userCertificate;binary", []string{base64.StdEncoding.EncodeToString(cert.Raw)})
+	//data := "MIIDODCCAiACCQCH3OLpJ4IsozANBgkqhkiG9w0BAQUFADBeMQswCQYDVQQGEwJDTjEQMA4GA1UECAwHQmVpamluZzEQMA4GA1UEBwwHQmVpamluZzENMAsGA1UECgwEemRsejENMAsGA1UECwwEemRsejENMAsGA1UEAwwEcm9vdDAeFw0yMzA0MjUwMzM0MTdaFw0zMzA0MjIwMzM0MTdaMF4xCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMQ0wCwYDVQQKDAR6ZGx6MQ0wCwYDVQQLDAR6ZGx6MQ0wCwYDVQQDDARyb290MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+xMgtkVyjBwUHcSqh4NIQ+GskSCVdYtztQD6coic8g9pH/WNWYf0kQmVLl8XySB50wBwUpXGKYCWhZcP0/bMULEzjfbZr2KKjKSd4Xt0m/5gLX2bhCbIQpPyQisnWS46i+yt2LgzLsk9zJyghQgdNJVj054mIKCLHjmG4/9YoiLfnbNiwMiMUMdu7X5Grp0CJe9sB1cr6Nnby234Kopvd0snWfNVepyO7ETjMpqGUqsaWVU/X2EWGCTaYtIN4dQYnKOBIKn4HrGSkHh5cHtYvoi29BDq7x11BN9Wuw+ls1Bp8MsYf4JmRj/YhBPsOnGLEsoiCyLPTEkS+SBMViuehwIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQCcxvMe6J9iGFztb7ODps4IMMQ0UvS4PclV9zMvQE3VSsu6U898j7HIqmIVDaf3e1/uP7JVtEGPE4C9n5KXV1Q2j2kygmZXewBlWVMknFYzK/MXFxHhvs3JfJrJDVWBQb5iFu5KgHI6dmFFq91OWdjvECBnomrRaTGOlIBsaeFSEekC5yFRwzpHdhiPieMen4D8f2nl0FlAu5jGMwcH5Ae4TSSIGnKzX7toCSkHD99azVTZ4/CpBW57cXPLckZOg8s2vuXluElSlS+6DLgUWVSwCQvzYbLWs+T+cgs2VA/XN2m+FIiHhwr8N303vL5SjUn9DLSDgBiGX4z1ifJIsKCu"
+	//entry.Attribute("userCertificate;binary", []string{data})
 
 	l := GetLdapConn()
 	// 发布证书
