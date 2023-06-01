@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 )
 
-func main() {
+func test() {
 	// 读取 PEM 格式的证书文件
 	certBytes, err := ioutil.ReadFile("/Users/me/Thebigwind/go-demo/cert-base/demo1/example.crt")
 	if err != nil {

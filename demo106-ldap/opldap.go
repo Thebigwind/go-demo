@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"crypto/md5"
+	"crypto/rsa"
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/hex"
@@ -11,7 +12,9 @@ import (
 	"github.com/go-ldap/ldap/v3"
 	"io/ioutil"
 	"log"
+	"math/big"
 	"os/exec"
+	"time"
 )
 
 /*
@@ -25,7 +28,43 @@ import (
 */
 func main() {
 	//testpub()
-	ShowCert()
+	//ShowCert()
+	ParseCert2("")
+}
+
+func ParseCert2(cert string) (CertInfo, error) {
+
+	certBytes, err := ioutil.ReadFile("./demo106-ldap/cfg.crt")
+	if err != nil {
+		fmt.Println("Error reading file:", err)
+		return CertInfo{}, err
+	}
+
+	//certBytes := []byte(cert)
+	fmt.Printf("xx:%v\n", string(certBytes))
+	//os.Exit(0)
+	block, _ := pem.Decode(certBytes)
+	c, err := x509.ParseCertificate(block.Bytes)
+	if err != nil {
+		log.Printf("Failed to parse certificate: %s", err)
+		return CertInfo{}, err
+	}
+	certInfo := CertInfo{
+		NotAfter:      c.NotAfter,
+		NotBefore:     c.NotBefore,
+		Sn:            Bigint2Hex(c.SerialNumber),
+		ParentSn:      c.Issuer.String(),  //c.Issuer.SerialNumber,
+		Subject:       c.Subject.String(), //c.Subject.CommonName,
+		OrgName:       c.Subject.Organization[0],
+		Name:          "",
+		Cert:          cert,
+		IssuedBy:      c.Issuer.CommonName,
+		KeyAlgorithm:  c.PublicKeyAlgorithm.String(),
+		SignAlgorithm: c.SignatureAlgorithm.String(),
+		keyLen:        c.PublicKey.(*rsa.PublicKey).Size() * 8,
+	}
+	fmt.Printf("certInfo:%+v\n", certInfo)
+	return certInfo, nil
 }
 
 func testpub() {
@@ -133,6 +172,33 @@ func ShowCert() (err error, certs []Cert) {
 	return
 }
 
+func Bigint2Hex(data *big.Int) string {
+	//bi := big.NewInt(1234)
+
+	// convert bi to a hexadecimal string
+	hex := fmt.Sprintf("%x", data)
+
+	fmt.Println(hex) // output: 75bcd15
+	return hex
+}
+
+//证书信息
+type CertInfo struct {
+	NotAfter      time.Time
+	NotBefore     time.Time
+	Sn            string
+	ParentSn      string
+	Signature     string
+	Subject       string
+	OrgName       string
+	Name          string
+	Cert          string
+	IssuedBy      string
+	SignAlgorithm string
+	KeyAlgorithm  string
+	keyLen        int
+}
+
 func ParseCert(cert string) {
 	certBytes, err := ioutil.ReadFile("./demo105-ldap/root.crt")
 	if err != nil {
@@ -156,6 +222,7 @@ func ParseCert(cert string) {
 	subject := c.Subject
 	pubKey := c.PublicKey
 
+	fmt.Printf("xx:%+v\n", c.Subject.SerialNumber)
 	fmt.Printf("notAfter:%+v,notBefore:%+v,rawIssuer:%+v,serialNumber:%+v,signature:%+v,subject:%+v,pubKey:%v",
 		notAfter, notBefore, string(rawIssuer), serialNumber, string(signature), subject, pubKey)
 }
