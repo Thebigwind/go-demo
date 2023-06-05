@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b1bcf6-6e5e-48d0-809a-856c62d383e1" name="Changes" comment="grpc">
-      <change afterPath="$PROJECT_DIR$/study/net/img_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/study/net/tcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/net/tcp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/main.go" afterDir="false" />
+    <list default="true" id="09b1bcf6-6e5e-48d0-809a-856c62d383e1" name="Changes" comment="common 方法">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +172,8 @@
     <MESSAGE value="ldap,docker,shell" />
     <MESSAGE value="P12文件，ldap objectclass, go-zero goctl命令rpc和api生成" />
     <MESSAGE value="grpc" />
-    <option name="LAST_COMMIT_MESSAGE" value="grpc" />
+    <MESSAGE value="common 方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="common 方法" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
