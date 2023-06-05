@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/bwmarrin/snowflake v0.3.0
+	github.com/dlclark/regexp2 v1.10.0
 	github.com/go-ldap/ldap/v3 v3.4.4
 	github.com/lib/pq v1.10.6
 	github.com/satori/go.uuid v1.2.0

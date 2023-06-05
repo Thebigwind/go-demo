@@ -25,6 +25,12 @@ func GetMd5String(s string) string {
 	return hex.EncodeToString(h.Sum(nil))
 }
 
+// MD5 Hash函数
+func MD5(input string) string {
+	tokenByte := md5.Sum([]byte(input))
+	return fmt.Sprintf("%x", tokenByte)
+}
+
 func Command(arg ...string) (string, error) {
 	name := "/bin/bash"
 	c := "-c"
