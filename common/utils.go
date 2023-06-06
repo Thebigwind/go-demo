@@ -74,3 +74,10 @@ func RemoveTmpFile(path string) {
 		fmt.Printf("err:%s", err.Error())
 	}
 }
+
+func IF(condition bool, trueVal, falseVal interface{}) interface{} {
+	if condition {
+		return trueVal
+	}
+	return falseVal
+}
