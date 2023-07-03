@@ -22,6 +22,32 @@ func reverseBetween(head *ListNode, m int, n int) *ListNode {
 	return newhead.Next
 }
 
+func reverseBetween1(head *ListNode, m int, n int) *ListNode {
+	dummy := &ListNode{-1, head}
+	cur := dummy
+	var start, end *ListNode
+	for i := 0; i < n; i++ {
+		if i == m-1 {
+			start = cur
+		}
+		cur = cur.Next
+	}
+	end = cur
+	startpre := start
+	start = start.Next
+	startpre.Next = end
+	thenext := end.Next
+	for start != end {
+		t := start.Next
+		end.Next = start
+		end.Next.Next = thenext
+		thenext = end.Next
+		start = t
+	}
+
+	return dummy.Next
+}
+
 //////////////////////////
 func reverseLinkedList(head *ListNode) {
 	var pre *ListNode

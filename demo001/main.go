@@ -3,8 +3,22 @@ package main
 import (
 	"context"
 	"fmt"
+	"sync"
 	"time"
 )
+
+type singleton struct{}
+
+var instance *singleton
+var singletonOnce sync.Once
+
+func GetInstance() *singleton {
+	singletonOnce.Do(func() {
+		instance = &singleton{}
+	})
+
+	return instance
+}
 
 func main() {
 	test()

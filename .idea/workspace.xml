@@ -6,6 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="09b1bcf6-6e5e-48d0-809a-856c62d383e1" name="Changes" comment="common 方法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cgo/demo1/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cgo/demo1/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cgo/demo2/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cgo/demo2/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cgo/demo4/hello.c" beforeDir="false" afterPath="$PROJECT_DIR$/cgo/demo4/hello.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cgo/demo4/hello.h" beforeDir="false" afterPath="$PROJECT_DIR$/cgo/demo4/hello.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cgo/demo4/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cgo/demo4/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo001/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/demo001/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/case5-int数字反转.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/case5-int数字反转.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/case7-链表区间内反转.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/case7-链表区间内反转.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker-swarm.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker-swarm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker.txt" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker容器编排.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker容器编排.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker容器通信.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker容器通信.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker常用命令.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker常用命令.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker相关.txt" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker相关.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker部署.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker部署.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker镜像其它操作.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker镜像其它操作.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/docker镜像构建.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/docker镜像构建.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study/容器编排.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/docker/容器编排.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +71,7 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cgo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -61,37 +80,45 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cgo" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/demo105-ldap" />
       <recent name="$PROJECT_DIR$/demo107-sm2-protect" />
       <recent name="$PROJECT_DIR$/demo107-sm2" />
-      <recent name="$PROJECT_DIR$/cert-base/demo1" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/study/docker" />
       <recent name="$PROJECT_DIR$/cert-base" />
       <recent name="$PROJECT_DIR$/leetcode" />
       <recent name="$PROJECT_DIR$/study/database" />
       <recent name="$PROJECT_DIR$/study/linux" />
-      <recent name="$PROJECT_DIR$/study/golang" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/thebigwind/go-demo/test">
-    <configuration name="go build github.com/thebigwind/go-demo/cert-base/demo1" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="go-demo" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/cert-base/demo1" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/cert-base/demo1/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build github.com/thebigwind/go-demo/demo106-ldap" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build github.com/thebigwind/go-demo/cgo/demo10">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="go-demo" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
-      <package value="github.com/thebigwind/go-demo/demo106-ldap" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/demo106-ldap/opldap.go" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/thebigwind/go-demo/cgo/demo10" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-demo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/thebigwind/go-demo/cgo/demo10" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/cgo/demo10/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/thebigwind/go-demo/cgo/demo6" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-demo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/thebigwind/go-demo/cgo/demo6" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/cgo/demo6/main.go" />
       <method v="2" />
     </configuration>
     <configuration name="go build github.com/thebigwind/go-demo/test" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -103,44 +130,47 @@
       <filePath value="$PROJECT_DIR$/test/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="TestQuery1 in github.com/thebigwind/go-demo/demo103-ldap" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/thebigwind/go-demo/test2" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
-      <working_directory value="$PROJECT_DIR$/demo103-ldap" />
-      <root_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo103-ldap" />
+      <package value="github.com/thebigwind/go-demo/test2" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestQuery1\E$" />
+      <filePath value="$PROJECT_DIR$/test2/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="TestQueryCert in github.com/thebigwind/go-demo/demo103-ldap" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/thebigwind/go-demo/test3" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
-      <working_directory value="$PROJECT_DIR$/demo103-ldap" />
-      <root_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo103-ldap" />
+      <package value="github.com/thebigwind/go-demo/test3" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test3/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="go-demo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestQueryCert\E$" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo106-ldap" />
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/cert-base/demo1" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/cgo/demo6" />
       <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test" />
-      <item itemvalue="Go Test.TestQuery1 in github.com/thebigwind/go-demo/demo103-ldap" />
-      <item itemvalue="Go Test.TestQueryCert in github.com/thebigwind/go-demo/demo103-ldap" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test2" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test3" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/cgo/demo10" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/cgo/demo10" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test3" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test2" />
         <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo106-ldap" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/cert-base/demo1" />
-        <item itemvalue="Go Test.TestQueryCert in github.com/thebigwind/go-demo/demo103-ldap" />
-        <item itemvalue="Go Test.TestQuery1 in github.com/thebigwind/go-demo/demo103-ldap" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/cgo/demo6" />
       </list>
     </recent_temporary>
   </component>
