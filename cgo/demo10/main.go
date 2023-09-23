@@ -13,4 +13,6 @@ func main() {
 	defer C.free(unsafe.Pointer(cstr))
 	voidPtr := unsafe.Pointer(cstr)
 	fmt.Printf("%v\n", voidPtr)
+	voidPtr = unsafe.Pointer(nil)
+	fmt.Printf("%v\n", voidPtr)
 }

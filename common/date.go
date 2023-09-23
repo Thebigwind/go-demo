@@ -94,3 +94,27 @@ func TimeStringToGoTime(tm string) time.Time {
 	}
 	return time.Time{}
 }
+
+func GetDaysBetween2Date(format, date1Str, date2Str string) (int, error) {
+	// 将字符串转化为Time格式
+	date1, err := time.ParseInLocation(format, date1Str, time.Local)
+	if err != nil {
+		return 0, err
+	}
+	// 将字符串转化为Time格式
+	date2, err := time.ParseInLocation(format, date2Str, time.Local)
+	if err != nil {
+		return 0, err
+	}
+	//计算相差天数
+	return int(date1.Sub(date2).Hours() / 24), nil
+}
+
+//字符串转time.Time
+func GetTime(timeStr string) (time.Time, error) {
+	timeFormat, err := time.ParseInLocation(DateFmtYMDHIS, timeStr, time.Local)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return timeFormat, nil
+}

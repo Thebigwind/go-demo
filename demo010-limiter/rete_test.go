@@ -444,7 +444,7 @@ package main
 //	// suspected platform bug; see https://go.dev/issue/44067 and
 //	// https://go.dev/issue/50189.
 //	// Longer delays were also also observed on slower builders with Linux kernels
-//	// (linux-ppc64le-buildlet, android-amd64-emu), and on Solaris and Plan 9.
+//	// (nginx-ppc64le-buildlet, android-amd64-emu), and on Solaris and Plan 9.
 //	//
 //	// Since d is already fairly generous, we take 150% of wantD rounded up —
 //	// that's at least enough to account for the overruns we've seen so far in

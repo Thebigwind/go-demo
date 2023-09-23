@@ -22,6 +22,28 @@ func reverseBetween(head *ListNode, m int, n int) *ListNode {
 	return newhead.Next
 }
 
+func reverseBetweenx(head *ListNode, m int, n int) *ListNode {
+	if head == nil && head.Next == nil {
+		return head
+	}
+	//保存头节点
+	pre := &ListNode{Next: head}
+	//newhead := pre
+
+	//1-m保持不变
+	for i := 1; i < m; i++ {
+		pre = pre.Next
+	}
+	//m-n反转
+	curr := pre.Next
+	for i := m; i < n; i++ {
+		curr.Next = curr.Next.Next
+		curr.Next.Next = pre.Next
+
+	}
+	return head
+}
+
 func reverseBetween1(head *ListNode, m int, n int) *ListNode {
 	dummy := &ListNode{-1, head}
 	cur := dummy

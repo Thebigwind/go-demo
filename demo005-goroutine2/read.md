@@ -1,0 +1,1 @@
+通过 channel 传递信息，实现 goroutine 按顺序工作
