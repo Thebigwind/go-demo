@@ -3,9 +3,11 @@ module github.com/thebigwind/go-demo
 go 1.18
 
 require (
+	github.com/alecthomas/kingpin/v2 v2.3.2
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/dlclark/regexp2 v1.10.0
 	github.com/go-ldap/ldap/v3 v3.4.4
+	github.com/jpillora/overseer v1.1.6
 	github.com/lib/pq v1.10.6
 	github.com/satori/go.uuid v1.2.0
 	github.com/secsy/goftp v0.0.0-20200609142545-aa2de14babf4
@@ -29,7 +31,7 @@ require (
 	github.com/CloudyKit/jet/v4 v4.1.0 // indirect
 	github.com/Joker/hpp v1.0.0 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20220729165902-8cddb4f5de06 // indirect
-	github.com/alecthomas/kingpin/v2 v2.3.2 // indirect
+	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/aymerick/raymond v2.0.3-0.20180322193309-b565731e1464+incompatible // indirect
@@ -43,6 +45,7 @@ require (
 	github.com/iris-contrib/jade v1.1.4 // indirect
 	github.com/iris-contrib/pongo2 v0.0.1 // indirect
 	github.com/iris-contrib/schema v0.0.6 // indirect
+	github.com/jpillora/s3 v1.1.4 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kataras/blocks v0.0.7 // indirect
 	github.com/kataras/golog v0.1.8 // indirect

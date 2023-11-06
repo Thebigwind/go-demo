@@ -2,10 +2,13 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
 func main() {
+	dir, _ := os.Getwd()
+	fmt.Printf("dir:%s\n", dir)
 	a1 := "1\n2345 \n"
 	a2 := "1 2\n3 45"
 	fmt.Println(ComparePubkey(a1, a2))

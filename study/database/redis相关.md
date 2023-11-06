@@ -8,9 +8,12 @@ Redis支持数据的备份，即master-slave模式的数据备份。
 
 
 
-数据类型
+## 数据类型
+
 Redis支持五种数据类型：
-string（字符串），
+
+#### string（字符串），
+
 String 数据结构是简单的key-value类型，value其实不仅是String，也可以是数字。
 常用命令：get、set、incr、decr、mget等。
 
@@ -23,9 +26,8 @@ String 数据结构是简单的key-value类型，value其实不仅是String，�
 
 
 
+#### hash（哈希），
 
-
-hash（哈希），
 Redis hash 是一个 string 类型的 field（字段） 和 value（值） 的映射表，hash 特别适合用于存储对象。
 常用命令：hget,hset,hgetall 等。
 使用场景：存储部分变更数据，如用户信息等。
@@ -68,8 +70,8 @@ Redis::del('card:user:1');
 
 
 
+#### list（列表），
 
-list（列表），
 常用命令：lpush,rpush,lpop,rpop,lrange等。
 场景：
 比如twitter的关注列表，粉丝列表等都可以用Redis的list结构来实现。
@@ -87,16 +89,16 @@ Redis的list是每个子元素都是String类型的双向链表，可以通过pu
 
 
 
+#### set（集合）
 
 
 
-
-set（集合）及zset(sorted set：有序集合)
-
+#### 及zset(sorted set：有序集合)
 
 
 
-使用场景
+## 使用场景
+
 1）发送手机验证码，5分钟过期；
    set key,value,timeout
 
@@ -133,8 +135,7 @@ set（集合）及zset(sorted set：有序集合)
 
 
 
-
-redis分布式锁原理
+## redis分布式锁原理
 
 Redis 通常可以使用 setnx(key, value) 函数来实现分布式锁。
 key 和 value 就是基于缓存的分布式锁的两个属性，其中 key 表示锁 id，value = currentTime + timeOut，表示当前时间 + 超时时间。也就是说，某个进程获得 key 这把锁后，如果在 value 的时间内未释放锁，系统就会主动释放锁。

@@ -1,9 +1,16 @@
 package leetcode
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
-
+func main() {
+	s := "23addfasddfasddd"
+	res := lengthOfLongestSubstring1(s)
+	fmt.Printf("res;%d", res)
+}
 func lengthOfLongestSubstring1(s string) int {
 	start, end := 0, 0
 	for i := 0; i < len(s); i++ {

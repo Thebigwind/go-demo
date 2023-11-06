@@ -10,7 +10,7 @@ func main() {
 	// 方法1：
 	// GenerateFromPassword 以给定的代价返回密码的 bcrypt 哈希值。如果给定的成本小于 MinCost
 	// 则成本将设置为 DefaultCost。使用此包中定义的 CompareHashAndPassword 将返回的散列密码与其明文版本进行比较。
-	pass := "zdlzdev@zdlz.tech1"
+	pass := "zdlzdev@zdlz.tech"
 	//salt := "$2a$04$qDNasmVgJTgoIv8QVt1/LO"
 	salt := ""
 	pwd := []byte(pass + salt)
@@ -20,6 +20,8 @@ func main() {
 		//log.Fatalln(err.Error())
 	}
 	fmt.Println(string(hash))
+	//$2a$10$o1FY9YCPF9e0blIzrenV4e7JGH/Hj6ydEW5XBT.LNXPwrj/6MvNWG
+	//$2a$10$1q9TKa3Lgt0xoOWvKfkhf.7rzEdZSUlbL1PmdF.hBsOpT.2bwLPjq
 	// $2a$10$2/KZKEaWwxDp.vN2A4wplu3JBZ78Fhd6ECEjapoW.3Jx3Kpw924.C
 	//$2a$10$CnHZNeqejS7F/CgeiNkCnOKbjC39Py5A6a1wKurAqTKQ6G4dYD.Xi
 

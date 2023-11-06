@@ -3,9 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
+	"log"
+	"time"
 )
 
 type MongoDB struct {
@@ -65,4 +68,37 @@ func main() {
 		DbName:      "audit",
 	}
 	InitMongoDB(conf)
+}
+
+func test() {
+	// 设置MongoDB连接选项
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
+
+	// 创建MongoDB客户端
+	client, err := mongo.NewClient(clientOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// 连接MongoDB
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	err = client.Connect(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer client.Disconnect(ctx)
+
+	// 尝试访问一个MongoDB集合来检查连接
+	collection := client.Database("your_database_name").Collection("your_collection_name")
+
+	// 通过执行FindOne操作来检查连接
+	var result bson.M
+	err = collection.FindOne(ctx, bson.M{}).Decode(&result)
+	if err != nil {
+		log.Fatalf("无法访问MongoDB集合：%v", err)
+	}
+
+	fmt.Println("MongoDB连接正常，可以正常访问MongoDB集合。")
 }
