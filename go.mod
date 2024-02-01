@@ -7,6 +7,7 @@ require (
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/dlclark/regexp2 v1.10.0
 	github.com/go-ldap/ldap/v3 v3.4.4
+	github.com/go-sql-driver/mysql v1.7.1
 	github.com/jpillora/overseer v1.1.6
 	github.com/lib/pq v1.10.6
 	github.com/satori/go.uuid v1.2.0
@@ -21,6 +22,9 @@ require (
 	go.etcd.io/etcd/client/v3 v3.5.8
 	google.golang.org/grpc v1.54.0
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
+	gopkg.in/yaml.v2 v2.4.0
+	gorm.io/driver/mysql v1.5.2
+	gorm.io/gorm v1.25.5
 	software.sslmate.com/src/go-pkcs12 v0.2.0
 )
 
@@ -45,6 +49,8 @@ require (
 	github.com/iris-contrib/jade v1.1.4 // indirect
 	github.com/iris-contrib/pongo2 v0.0.1 // indirect
 	github.com/iris-contrib/schema v0.0.6 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/jpillora/s3 v1.1.4 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kataras/blocks v0.0.7 // indirect

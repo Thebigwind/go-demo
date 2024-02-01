@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b1bcf6-6e5e-48d0-809a-856c62d383e1" name="Changes" comment="shell">
+    <list default="true" id="09b1bcf6-6e5e-48d0-809a-856c62d383e1" name="Changes" comment="new content">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo081-mongo/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/demo081-mongo/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo089-bcrypt/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/demo089-bcrypt/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo109-cert/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/demo109-cert/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode/case2-最长不含重复字符子串.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/case2-最长不含重复字符子串.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/study/database/redis相关.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/database/redis相关.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/study/go-zero/yeager相关.md" beforeDir="false" afterPath="$PROJECT_DIR$/study/go-zero/yeager相关.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/study/linux/shell相关.txt" beforeDir="false" afterPath="$PROJECT_DIR$/study/linux/shell相关.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test9/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/test9/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,24 +26,51 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/demo105-ldap/main.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/leetcode/case7-链表区间内反转.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo00-localip/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo00-localip/api/api.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test7/main.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/study/linux/shell相关.txt" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/demo105-ldap-crl/main.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test6/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test8/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo-zip/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test9/main.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test7/b.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/demo103-ldap/main.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/study/shell/demo6-email.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo115-daemon/demo1/main.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/study/shell/demo-firewall.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo00-sm3/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo105-ldap/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/leetcode/case7-链表区间内反转.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo122-mongo3/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo105-ldap-crl/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test6/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo000-testhttp-cors/api.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo000-testhttp-cors/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo000-testhttp-cors/go.mod" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo122-mongo4/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/study/shell/demo6-email.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo005-goroutine2/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo122-mongo/main.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/study/shell/demo5.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/main.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/study/shell/demo4.sh" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/study/shell/demo3.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test10/main.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/study/shell/demo2.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test10/Makefile" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/common/NullString.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/demo114-selfupgrede/main.go" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -72,7 +92,7 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo115-daemon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -81,11 +101,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/demo115-daemon" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/demo120-yaml2/yaml" />
+      <recent name="$PROJECT_DIR$/demo117-callback" />
+      <recent name="$PROJECT_DIR$/demo115-daemon" />
       <recent name="$PROJECT_DIR$/study/go-zero" />
-      <recent name="$PROJECT_DIR$/study/mha" />
-      <recent name="$PROJECT_DIR$/study/mha/mysql" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/demo115-daemon/demo6-xdaemon/xdaemon" />
@@ -95,66 +115,66 @@
       <recent name="$PROJECT_DIR$/leetcode" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/thebigwind/go-demo/demo115-daemon/demo1">
-    <configuration name="go build github.com/thebigwind/go-demo/demo111-xx" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build github.com/thebigwind/go-demo/demo-zip">
+    <configuration name="go build github.com/thebigwind/go-demo/demo-zip" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo111-xx" />
+      <package value="github.com/thebigwind/go-demo/demo-zip" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/demo111-xx/main.go" />
+      <filePath value="$PROJECT_DIR$/demo-zip/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/thebigwind/go-demo/demo114-selfupgrede" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/thebigwind/go-demo/demo00-localip" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo114-selfupgrede" />
+      <package value="github.com/thebigwind/go-demo/demo00-localip" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/demo114-selfupgrede/main.go" />
+      <filePath value="$PROJECT_DIR$/demo00-localip/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/thebigwind/go-demo/demo115-daemon" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/thebigwind/go-demo/demo00-sm3" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo115-daemon" />
+      <package value="github.com/thebigwind/go-demo/demo00-sm3" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/demo115-daemon/main.go" />
+      <filePath value="$PROJECT_DIR$/demo00-sm3/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/thebigwind/go-demo/demo115-daemon/demo1" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/thebigwind/go-demo/demo000-httpclient" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo115-daemon/demo1" />
+      <package value="github.com/thebigwind/go-demo/demo000-httpclient" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/demo115-daemon/demo1/main.go" />
+      <filePath value="$PROJECT_DIR$/demo000-httpclient/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/thebigwind/go-demo/leetcode/string" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build testHttp" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/leetcode/string" />
+      <working_directory value="$PROJECT_DIR$/demo000-testhttp" />
+      <kind value="FILE" />
+      <package value="testHttp" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/leetcode/string/main.go" />
+      <filePath value="$PROJECT_DIR$/demo000-testhttp/api.go" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo111-xx" />
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/leetcode/string" />
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo114-selfupgrede" />
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo115-daemon" />
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo115-daemon/demo1" />
+      <item itemvalue="Go Build.go build testHttp" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo000-httpclient" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo00-localip" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo00-sm3" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo-zip" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo115-daemon/demo1" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo115-daemon" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo114-selfupgrede" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/leetcode/string" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo111-xx" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo-zip" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo00-sm3" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo00-localip" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo000-httpclient" />
+        <item itemvalue="Go Build.go build testHttp" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +207,9 @@
     <MESSAGE value="grpc" />
     <MESSAGE value="common 方法" />
     <MESSAGE value="shell" />
-    <option name="LAST_COMMIT_MESSAGE" value="shell" />
+    <MESSAGE value="new conent" />
+    <MESSAGE value="new content" />
+    <option name="LAST_COMMIT_MESSAGE" value="new content" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
