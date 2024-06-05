@@ -58,7 +58,12 @@ func CheckBizStatus() (bool, error) {
 }
 
 func main() {
-	test()
+	ipv4, err := GetLocalIP()
+	if err != nil {
+		fmt.Printf("err:%v", err)
+	} else {
+		fmt.Printf("ipv4:%v", ipv4)
+	}
 }
 
 func test() {

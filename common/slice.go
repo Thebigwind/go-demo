@@ -1,6 +1,9 @@
 package common
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // 求出交集
 func Intersection(a []int, b []int) (inter []int) {
@@ -36,7 +39,7 @@ func SupplementarySet(slice1, slice2 []string) []string {
 	return str
 }
 
-//StringBuild 根据输入的参数输出一个拼接好的字符串
+// StringBuild 根据输入的参数输出一个拼接好的字符串
 func StringBuild(args ...string) string {
 	var builder strings.Builder
 	for _, str := range args {
@@ -45,7 +48,7 @@ func StringBuild(args ...string) string {
 	return builder.String()
 }
 
-//SliceIndexOf 返回 elem 在切片 haystack 中的位置下标，如果不存在则返回-1
+// SliceIndexOf 返回 elem 在切片 haystack 中的位置下标，如果不存在则返回-1
 func SliceIndexOf(haystack []string, elem string) int {
 	for k, v := range haystack {
 		if v == elem {
@@ -106,4 +109,16 @@ func RemoveRep(slc []int64) []int64 {
 		// 大于的时候，通过map来过滤
 		return RemoveRepByMap(slc)
 	}
+}
+
+func CompareSlice(slice1, slice2 []string) error {
+	if len(slice1) != len(slice2) {
+		return fmt.Errorf("slice num not equal")
+	}
+	for i := 0; i < len(slice1); i++ {
+		if slice1[i] != slice2[i] {
+			return fmt.Errorf("slice index %d not equal", i)
+		}
+	}
+	return nil
 }

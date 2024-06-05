@@ -8,8 +8,10 @@ require (
 	github.com/dlclark/regexp2 v1.10.0
 	github.com/go-ldap/ldap/v3 v3.4.4
 	github.com/go-sql-driver/mysql v1.7.1
+	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/jpillora/overseer v1.1.6
 	github.com/lib/pq v1.10.6
+	github.com/mr-tron/base58 v1.2.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/secsy/goftp v0.0.0-20200609142545-aa2de14babf4
 	github.com/shirou/gopsutil v3.21.11+incompatible
