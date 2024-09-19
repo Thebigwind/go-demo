@@ -4,36 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b1bcf6-6e5e-48d0-809a-856c62d383e1" name="Changes" comment="embed">
-      <change afterPath="$PROJECT_DIR$/aa/aa.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/base58.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/comparepubkey.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/snowflake.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo-embed/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo-embed/my_cert.pm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo000-testhttp-cors/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo000-token/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo000-urlcode/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo089-bcrypt2/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo106-ldaptest/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo106-ldaptest/root.crt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo106-ldaptest/root.key" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo123-osenv/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study/shell/demo6.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study/shell/sed.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study/shell/str.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study/shell/str2.sh" afterDir="false" />
+    <list default="true" id="09b1bcf6-6e5e-48d0-809a-856c62d383e1" name="Changes" comment="shell">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/date.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/date.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/slice.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/slice.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/token.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/token.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo00-localip/api/api.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo00-localip/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/demo00-localip/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo089-bcrypt/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/demo089-bcrypt/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test10/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/test10/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test8/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/test8/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +88,7 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/study/shell" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -125,11 +97,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/study/shell" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/demo120-yaml2/yaml" />
       <recent name="$PROJECT_DIR$/demo117-callback" />
       <recent name="$PROJECT_DIR$/demo115-daemon" />
-      <recent name="$PROJECT_DIR$/study/go-zero" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/demo115-daemon/demo6-xdaemon/xdaemon" />
@@ -139,7 +111,7 @@
       <recent name="$PROJECT_DIR$/leetcode" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/thebigwind/go-demo/demo-embed">
+  <component name="RunManager" selected="Go Build.go build github.com/thebigwind/go-demo/test10">
     <configuration name="go build github.com/thebigwind/go-demo/demo-embed" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
       <working_directory value="$PROJECT_DIR$" />
@@ -149,31 +121,13 @@
       <filePath value="$PROJECT_DIR$/demo-embed/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/thebigwind/go-demo/demo105-ldap" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/thebigwind/go-demo/demo00-localip" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-demo" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo105-ldap" />
+      <package value="github.com/thebigwind/go-demo/demo00-localip" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/demo105-ldap/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build github.com/thebigwind/go-demo/demo106-ldap" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="go-demo" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo106-ldap" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/demo106-ldap/opldap.go" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build github.com/thebigwind/go-demo/demo106-ldaptest" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="go-demo" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/thebigwind/go-demo/demo106-ldaptest" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/demo106-ldaptest/main.go" />
+      <filePath value="$PROJECT_DIR$/demo00-localip/main.go" />
       <method v="2" />
     </configuration>
     <configuration name="go build github.com/thebigwind/go-demo/demo123-osenv" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -185,20 +139,38 @@
       <filePath value="$PROJECT_DIR$/demo123-osenv/main.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build github.com/thebigwind/go-demo/test10" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-demo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/thebigwind/go-demo/test10" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test10/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/thebigwind/go-demo/test2" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-demo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/thebigwind/go-demo/test2" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test2/main.go" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo123-osenv" />
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo106-ldaptest" />
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo106-ldap" />
-      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo105-ldap" />
       <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo-embed" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test2" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo00-localip" />
+      <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test10" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test10" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/test2" />
+        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo00-localip" />
         <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo-embed" />
         <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo123-osenv" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo106-ldaptest" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo105-ldap" />
-        <item itemvalue="Go Build.go build github.com/thebigwind/go-demo/demo106-ldap" />
       </list>
     </recent_temporary>
   </component>
@@ -230,12 +202,12 @@
     <MESSAGE value="P12文件，ldap objectclass, go-zero goctl命令rpc和api生成" />
     <MESSAGE value="grpc" />
     <MESSAGE value="common 方法" />
-    <MESSAGE value="shell" />
     <MESSAGE value="new conent" />
     <MESSAGE value="new content" />
     <MESSAGE value="sm3摘要" />
     <MESSAGE value="embed" />
-    <option name="LAST_COMMIT_MESSAGE" value="embed" />
+    <MESSAGE value="shell" />
+    <option name="LAST_COMMIT_MESSAGE" value="shell" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
