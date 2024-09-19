@@ -64,6 +64,10 @@ func main() {
 	} else {
 		fmt.Printf("ipv4:%v", ipv4)
 	}
+
+	//
+	mac := GetLocalMac()
+	fmt.Printf("mac:%v", mac)
 }
 
 func test() {
@@ -75,4 +79,19 @@ func test() {
 	} else {
 		os.WriteFile("pqc-enc.crt", reqBytes, 0755)
 	}
+}
+
+func GetLocalMac() (mac string) {
+	// 获取本机的MAC地址
+	interfaces, err := net.Interfaces()
+	if err != nil {
+		return ""
+	}
+	for _, inter := range interfaces {
+		fmt.Println(inter.Name)
+		mac = inter.HardwareAddr.String() //获取本机MAC地址
+		fmt.Println("MAC ===== ", mac)
+	}
+	fmt.Println("MAC = ", mac)
+	return mac
 }
